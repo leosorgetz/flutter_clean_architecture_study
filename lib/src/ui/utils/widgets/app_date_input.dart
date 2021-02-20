@@ -30,8 +30,6 @@ class AppDateInput extends StatefulWidget {
 class _AppDateInputState extends State<AppDateInput> {
   final dateTimeHelper = DateTimeHelper();
 
-  // dynamic get _setValue => widget.value ?? '';
-
   @override
   void initState() {
     super.initState();
@@ -43,7 +41,7 @@ class _AppDateInputState extends State<AppDateInput> {
           final date = await PlatformDatePicker.showDate(
             context: context,
             firstDate: DateTime.parse('1900-01-01'),
-            initialDate: widget.value,
+            initialDate: widget.value ?? DateTime.now(),
             lastDate: DateTime(
               DateTime.now().year.toInt() + DateTime.now().month.toInt() + DateTime.now().day.toInt(),
             ),
