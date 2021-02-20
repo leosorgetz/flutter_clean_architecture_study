@@ -11,23 +11,31 @@ part 'post_controller.g.dart';
 class PostController = _PostControllerBase with _$PostController;
 
 abstract class _PostControllerBase with Store {
+  final DateTimeHelper dateTimeHelper;
+  final RetryHelper retryHelper;
+  final ToastHelper toastHelper;
   Post post;
-  final dateTimeHelper = DateTimeHelper();
   DateTime dateTime;
   String text;
+
+  _PostControllerBase(
+    this.dateTimeHelper,
+    this.retryHelper,
+    this.toastHelper,
+  );
 
   void setPost(Post post) {
     this.post = post;
   }
 
   Future<void> doRetry() async {
-    ToastHelper.show('Oi');
-    await RetryHelper.testRetry(timeToRetry: 2, maximumAttempts: 4);
-    ToastHelper.show('Tchau');
+    toastHelper.show('Oi');
+    await retryHelper.testRetry(timeToRetry: 2, maximumAttempts: 4);
+    toastHelper.show('Tchau');
   }
 
   void showText() {
-    ToastHelper.show('$text-${dateTimeHelper.formatToDMY(dateTime)}');
+    toastHelper.show('$text-${dateTimeHelper.formatToDMY(dateTime)}');
   }
 
   @computed

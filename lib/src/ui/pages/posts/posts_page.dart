@@ -1,4 +1,5 @@
 import 'package:estudo_app/src/ui/pages/posts/posts_controller.dart';
+import 'package:estudo_app/src/ui/pages/posts/widgets/drawer_posts_widget.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_pull_to_refresh.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
       appBar: AppBar(
         title: Text('Posts'),
       ),
+      drawer: DrawerPostsWidget(),
       body: Observer(builder: (context) {
         if (controller.postsIsLoading) return buildLoading();
         if (controller.postsHasError) return buildError();
@@ -51,7 +53,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
           return ListTile(
             title: Text(post.title),
             enabled: true,
-            onTap: (){
+            onTap: () {
               controller.goToDetails(post);
             },
           );

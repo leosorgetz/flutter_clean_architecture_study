@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:injectable/injectable.dart';
+
+@injectable
 class LoggerHelper {
-  static void show(String text) {
+  void show(String text) {
     log('[LOGGER HELPER] $text');
   }
 }

@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class RetryHelper {
-  static Future<void> testRetry({
+  Future<void> testRetry({
     @required int timeToRetry,
     @required int maximumAttempts,
   }) async {
