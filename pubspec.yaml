@@ -37,14 +37,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-vars:
-  clean: flutter clean
-  get: flutter pub get
-  runner: flutter pub run build_runner
-
-scripts:
-  build_clean: $clean & $get & $runner build --delete-conflicting-outputs
-  watch_clean: $clean & $get & $runner watch --delete-conflicting-outputs
-  watch: $get & $runner watch
-  build: $clean & $get & $runner watch
