@@ -1,0 +1,50 @@
+name: estudo_app
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  intl: ^0.16.1
+  flutter_svg:
+  platform_date_picker: ^0.0.4+1
+  pull_to_refresh: 1.6.3
+  dio: ^3.0.10
+  json_serializable: ^3.5.1
+  mobx: ^1.2.1+4
+  auto_route: ^0.6.9
+  injectable: ^1.0.7
+  get_it: ^5.0.6
+  flutter_mobx: ^1.1.0+2
+  oktoast: ^2.3.2
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  auto_route_generator: ^0.6.10
+  injectable_generator: ^1.0.7
+  mobx_codegen: ^1.1.2
+  build_runner: ^1.11.0
+  faker: ^1.3.0
+  mockito: ^4.1.4
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+vars:
+  clean: flutter clean
+  get: flutter pub get
+  runner: flutter pub run build_runner
+
+scripts:
+  build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+  watch_clean: $clean & $get & $runner watch --delete-conflicting-outputs
+  watch: $get & $runner watch
+  build: $clean & $get & $runner watch
