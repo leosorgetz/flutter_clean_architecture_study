@@ -3,8 +3,8 @@ import 'package:estudo_app/src/domain/repositories/get_posts/get_posts_repositor
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../utils/mocked_classes.dart';
-import '../../utils/mocked_objects.dart';
+import '../../../utils/mocked_classes.dart';
+import '../../../utils/mocked_objects.dart';
 
 void main() {
   final dataSource = GetPostsDataSourceMock();

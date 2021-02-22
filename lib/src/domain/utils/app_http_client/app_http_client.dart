@@ -4,9 +4,13 @@ import 'package:injectable/injectable.dart';
 
 @Singleton(as: IAppHttpClient)
 class AppHttpClient implements IAppHttpClient {
-  final Dio _dio = Dio(
-    BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
-  );
+  Dio _dio;
+
+  AppHttpClient() {
+    _dio = Dio(
+      BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
+    );
+  }
 
   @override
   Future delete(String url, {Map<String, dynamic> queryParameters, Map<String, String> headers}) {

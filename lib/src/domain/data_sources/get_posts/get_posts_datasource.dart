@@ -11,7 +11,6 @@ class GetPostsDataSource implements IGetPostsDataSource {
 
   @override
   Future<List<Post>> call() async {
-    await Future.delayed(Duration(milliseconds: 1200));
     final response = await _appHttpClient.get('/posts');
     return (response.data as List).map((item) => Post.fromJson(item)).toList();
   }

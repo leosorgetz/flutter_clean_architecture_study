@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppButtonWidget extends StatelessWidget {
   final Color borderColor;
+  final Color color;
   final String text;
   final Function onPressed;
   final EdgeInsetsGeometry padding;
@@ -15,6 +16,7 @@ class AppButtonWidget extends StatelessWidget {
     @required this.onPressed,
     this.padding,
     this.widget,
+    this.color,
     this.borderColor = Colors.transparent,
     this.textStyle = AppTextStyle.textWhite,
   }) : super();
@@ -25,7 +27,7 @@ class AppButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         padding: padding,
         height: 40,
-        color: AppColors.primaryColor,
+        color: color ?? AppColors.primaryColor,
         elevation: 1,
         disabledColor: AppColors.mono3,
         shape: const RoundedRectangleBorder(

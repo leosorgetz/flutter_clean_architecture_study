@@ -1,3 +1,4 @@
+import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -13,7 +14,7 @@ class PullToRefreshWidget extends StatelessWidget {
   Widget build(BuildContext context) => SmartRefresher(
         header: const MaterialClassicHeader(
           color: Colors.white,
-          backgroundColor: Colors.blue,
+          backgroundColor: AppColors.primaryColor,
           distance: 80,
         ),
         enablePullDown: true,

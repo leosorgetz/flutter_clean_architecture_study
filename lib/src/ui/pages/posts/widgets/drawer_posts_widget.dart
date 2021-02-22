@@ -2,6 +2,7 @@ import 'package:estudo_app/src/ui/pages/posts/widgets/drawer_posts_controller.da
 import 'package:estudo_app/src/ui/utils/constants/app_assets_path.dart';
 import 'package:estudo_app/src/ui/utils/constants/app_text_styles.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
+import 'package:estudo_app/src/ui/utils/widgets/app_switch_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -12,53 +13,51 @@ class DrawerPostsWidget extends StatefulWidget {
 
 class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsController> {
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.black,
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.3),
-                  BlendMode.dstATop,
+  Widget build(BuildContext context) => Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.4),
+                    BlendMode.dstATop,
+                  ),
+                  image: AssetImage(AppAssetsPath.uncle),
+                  fit: BoxFit.fitHeight,
                 ),
-                image: AssetImage(AppAssetsPath.uncle),
-                fit: BoxFit.fitHeight,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20, top: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Flutter Clean Arch',
+                      style: AppTextStyle.titleWhite,
+                    ),
+                    Text(
+                      'Projeto exemplo aplicando conceitos e outras coisas legais!',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyle.textWhite,
+                    ),
+                  ],
+                ),
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 20, top: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Flutter Clean Arch',
-                    style: AppTextStyle.titleWhite,
-                  ),
-                  Text(
-                    'Projeto Exemplo aplicando conceitos e outras coisas legais!',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyle.textWhite,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Observer(builder: (context) {
-            return ListTile(
-              trailing: Switch(
-                value: controller.status,
-                onChanged: controller.activateFingerprint,
-              ),
-              leading: Text('Configurações'),
-              // trailing: Icon(Icons.settings),
-            );
-          }),
-        ],
-      ),
-    );
-  }
+            Observer(builder: (context) {
+              return ListTile(
+                trailing: AppSwitchWidget(
+                  value: controller.status,
+                  onChanged: controller.activateFingerprint,
+                ),
+                leading: Text('Configurações'),
+                // trailing: Icon(Icons.settings),
+              );
+            }),
+          ],
+        ),
+      );
 }

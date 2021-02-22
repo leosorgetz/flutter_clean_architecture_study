@@ -157,6 +157,7 @@ analyzer:
   exclude:
     - lib/**.g.dart
     - lib/config/**.dart
+    - generator/**.dart
 
   errors:
 #    avoid_as: error

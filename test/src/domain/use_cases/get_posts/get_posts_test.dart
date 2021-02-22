@@ -3,8 +3,8 @@ import 'package:estudo_app/src/domain/use_cases/get_posts/get_posts_usecase.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../utils/mocked_classes.dart';
-import '../../utils/mocked_objects.dart';
+import '../../../utils/mocked_classes.dart';
+import '../../../utils/mocked_objects.dart';
 
 void main() {
   final getPostsRepositoryMock = GetPostsRepositoryMock();

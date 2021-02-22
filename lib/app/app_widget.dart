@@ -14,18 +14,31 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends BaseState<AppWidget, AppController> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return OKToast(
       child: MaterialApp(
         builder: ExtendedNavigator.builder(
           router: BaseRouter(),
           name: NavigatorHelper.baseRouterName,
-          builder: (context, extendedNav) => Theme(
-            data: ThemeData(
-              primaryColor: AppColors.primaryColor,
-            ),
-            child: extendedNav,
-          ),
+          builder: (context, extendedNav) {
+            final data = MediaQuery.of(context);
+            return MediaQuery(
+              data: data.copyWith(
+                textScaleFactor: 1,
+              ),
+              child: Theme(
+                data: ThemeData(
+                  primaryColor: AppColors.primaryColor,
+                ),
+                child: extendedNav,
+              ),
+            );
+          },
         ),
       ),
     );
