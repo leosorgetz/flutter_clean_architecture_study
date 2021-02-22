@@ -1,4 +1,4 @@
-import 'package:estudo_app/src/domain/data_sources/fingerprint_is_active/fingerprint_is_active_interface.dart';
+import 'package:estudo_app/src/domain/data_sources/get_fingerprint_is_active/get_fingerprint_is_active_repository_interface.dart';
 import 'package:estudo_app/src/domain/utils/app_storage_client/app_storage_client_interface.dart';
 import 'package:injectable/injectable.dart';
 

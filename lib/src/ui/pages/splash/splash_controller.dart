@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:estudo_app/config/router/base_router.gr.dart';
+import 'package:estudo_app/src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart';
 import 'package:estudo_app/src/ui/utils/helpers/toast_helper.dart';
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
@@ -14,6 +15,7 @@ class SplashController = _SplashControllerBase with _$SplashController;
 abstract class _SplashControllerBase with Store {
   final SharedPreferences sharedPreferences;
   final ToastHelper toastHelper;
+  final IFingerprintIsActiveUseCase fingerprintIsActiveUseCase;
   final message = 'Autentique para entrar no app.';
 
   @observable
@@ -22,14 +24,15 @@ abstract class _SplashControllerBase with Store {
   _SplashControllerBase(
     this.sharedPreferences,
     this.toastHelper,
+    this.fingerprintIsActiveUseCase,
   );
 
   @action
   void setErrorMessage(String errorMessage) => this.errorMessage = errorMessage;
 
   Future<void> checkBiometric() async {
-    final fingerprintIsActive = sharedPreferences.getBool('fingerprintIsActive');
-    if (fingerprintIsActive != null && fingerprintIsActive) {
+    final fingerprintIsActive = await fingerprintIsActiveUseCase();
+    if (fingerprintIsActive) {
       final _localAuth = LocalAuthentication();
       final canCheckBiometrics = await _localAuth.canCheckBiometrics;
       if (canCheckBiometrics) {
