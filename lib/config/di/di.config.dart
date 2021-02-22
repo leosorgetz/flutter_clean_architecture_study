@@ -9,25 +9,25 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i24;
 
 import '../../app/app_controller.dart' as _i3;
-import '../../src/domain/data_sources/fingerprint_is_active/get_fingerprint_is_active_use_case.dart'
+import '../../src/domain/data_sources/get_fingerprint_is_active/get_fingerprint_is_active_repository.dart'
     as _i7;
-import '../../src/domain/data_sources/fingerprint_is_active/get_fingerprint_is_active_repository_interface.dart'
+import '../../src/domain/data_sources/get_fingerprint_is_active/get_fingerprint_is_active_repository_interface.dart'
     as _i6;
 import '../../src/domain/data_sources/get_posts/get_posts_datasource.dart'
     as _i14;
 import '../../src/domain/data_sources/get_posts/get_posts_datasource_interface.dart'
     as _i13;
-import '../../src/domain/repositories/fingerprint_is_active/get_fingerprint_is_active_use_case.dart'
+import '../../src/domain/repositories/get_fingerprint_is_active/get_fingerprint_is_active_repository.dart'
     as _i10;
-import '../../src/domain/repositories/fingerprint_is_active/get_fingerprint_is_active_repository_interface.dart'
+import '../../src/domain/repositories/get_fingerprint_is_active/get_fingerprint_is_active_repository_interface.dart'
     as _i9;
 import '../../src/domain/repositories/get_posts/get_posts_repository.dart'
     as _i17;
 import '../../src/domain/repositories/get_posts/get_posts_repository_interface.dart'
     as _i16;
-import '../../src/domain/use_cases/fingerprint_is_active/get_fingerprint_is_active_use_case.dart'
+import '../../src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case.dart'
     as _i12;
-import '../../src/domain/use_cases/fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart'
+import '../../src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart'
     as _i11;
 import '../../src/domain/use_cases/get_posts/get_posts_use_case.dart' as _i19;
 import '../../src/domain/use_cases/get_posts/get_posts_use_case_interface.dart'
@@ -89,9 +89,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i23.RetryHelper>(),
       get<_i25.ToastHelper>()));
   gh.factory<_i28.SplashController>(() => _i28.SplashController(
-      get<_i24.SharedPreferences>(),
-      get<_i25.ToastHelper>(),
-      get<_i11.IFingerprintIsActiveUseCase>()));
+      get<_i25.ToastHelper>(), get<_i11.IFingerprintIsActiveUseCase>()));
   gh.singleton<_i15.IAppHttpClient>(_i29.AppHttpClient());
   gh.singleton<_i8.IAppStorageClient>(_i30.AppStorageClient());
   return get;

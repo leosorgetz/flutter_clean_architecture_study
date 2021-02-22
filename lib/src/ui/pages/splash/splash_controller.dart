@@ -5,7 +5,6 @@ import 'package:estudo_app/src/ui/utils/helpers/toast_helper.dart';
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'splash_controller.g.dart';
 
@@ -13,7 +12,6 @@ part 'splash_controller.g.dart';
 class SplashController = _SplashControllerBase with _$SplashController;
 
 abstract class _SplashControllerBase with Store {
-  final SharedPreferences sharedPreferences;
   final ToastHelper toastHelper;
   final IFingerprintIsActiveUseCase fingerprintIsActiveUseCase;
   final message = 'Autentique para entrar no app.';
@@ -22,7 +20,6 @@ abstract class _SplashControllerBase with Store {
   String errorMessage;
 
   _SplashControllerBase(
-    this.sharedPreferences,
     this.toastHelper,
     this.fingerprintIsActiveUseCase,
   );
