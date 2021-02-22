@@ -1,3 +1,3 @@
-abstract class IFingerprintIsActiveRepository {
-  Future<bool> call();
+abstract class IGetFingerprintIsActiveRepository {
+  bool call();
 }

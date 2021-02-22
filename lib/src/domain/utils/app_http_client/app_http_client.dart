@@ -12,6 +12,14 @@ class AppHttpClient implements IAppHttpClient {
     );
   }
 
+  /*final Dio _dio;
+
+  AppHttpClient(this._dio) {
+    _dio.options = BaseOptions(
+      baseUrl: 'https://jsonplaceholder.typicode.com',
+    );
+  }*/
+
   @override
   Future delete(String url, {Map<String, dynamic> queryParameters, Map<String, String> headers}) {
     return _dio.delete(

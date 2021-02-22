@@ -5,4 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class RegisterModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
+  // Dio get dio => Dio();
 }

@@ -1,3 +1,3 @@
-abstract class IFingerprintIsActiveUseCase {
-  Future<bool> call();
+abstract class IGetFingerprintIsActiveUseCase {
+  bool call();
 }

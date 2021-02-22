@@ -52,67 +52,67 @@ main(List<String> args) async {
   await saveFile(
     path: '${PROJECT_PATH}${USE_CASE_PATH}',
     folderName: folderName,
-    fileName: '$folderName.dart',
+    fileName: '${folderName}_use_case.dart',
     content: replacedUseCase,
   );
 
   await saveFile(
     path: '${PROJECT_PATH}${USE_CASE_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_interface.dart',
+    fileName: '${folderName}_use_case_interface.dart',
     content: replacedUseCaseInterface,
   );
 
   await saveFile(
     path: '${TESTS_PATH}${USE_CASE_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_test.dart',
+    fileName: '${folderName}_use_case_test.dart',
     content: replacedUseCaseTest,
   );
 
-  _print('UseCases / UseCases Interfaces / Test criadas');
+  _print('UseCases / UseCases Interfaces / Test criadas', withSpace: true);
 
   await saveFile(
     path: '${PROJECT_PATH}${REPOSITORY_PATH}',
     folderName: folderName,
-    fileName: '$folderName.dart',
+    fileName: '${folderName}_repository.dart',
     content: replacedRepository,
   );
 
   await saveFile(
     path: '${PROJECT_PATH}${REPOSITORY_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_interface.dart',
+    fileName: '${folderName}_repository_interface.dart',
     content: replacedRepositoryInterface,
   );
 
   await saveFile(
     path: '${TESTS_PATH}${REPOSITORY_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_test.dart',
+    fileName: '${folderName}_repository_test.dart',
     content: replacedRepositoryTest,
   );
 
-  _print('Repository / Repository Interfaces / Test criadas');
+  _print('Repository / Repository Interfaces / Test criadas', withSpace: true);
 
   await saveFile(
     path: '${PROJECT_PATH}${DATA_SOURCE_PATH}',
     folderName: folderName,
-    fileName: '$folderName.dart',
+    fileName: '${folderName}_data_source.dart',
     content: replacedDataSource,
   );
 
   await saveFile(
     path: '${PROJECT_PATH}${DATA_SOURCE_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_interface.dart',
+    fileName: '${folderName}_data_source_interface.dart',
     content: replacedDataSourceInterface,
   );
 
   await saveFile(
     path: '${TESTS_PATH}${DATA_SOURCE_PATH}',
     folderName: folderName,
-    fileName: '${folderName}_test.dart',
+    fileName: '${folderName}_data_source_test.dart',
     content: replacedDataSourceTest,
   );
 
@@ -139,7 +139,6 @@ Future<void> saveFile({
   createDirectory(path: directoryName);
   File(fileNameETBilu).writeAsString(content);
   // _print(fileNameETBilu);
-  // _print(directoryName);
 }
 
 void createDirectory({String path}) {

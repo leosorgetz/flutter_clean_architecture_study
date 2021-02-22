@@ -13,7 +13,7 @@ class SplashController = _SplashControllerBase with _$SplashController;
 
 abstract class _SplashControllerBase with Store {
   final ToastHelper toastHelper;
-  final IFingerprintIsActiveUseCase fingerprintIsActiveUseCase;
+  final IGetFingerprintIsActiveUseCase getFingerprintIsActiveUseCase;
   final message = 'Autentique para entrar no app.';
 
   @observable
@@ -21,14 +21,14 @@ abstract class _SplashControllerBase with Store {
 
   _SplashControllerBase(
     this.toastHelper,
-    this.fingerprintIsActiveUseCase,
+    this.getFingerprintIsActiveUseCase,
   );
 
   @action
   void setErrorMessage(String errorMessage) => this.errorMessage = errorMessage;
 
   Future<void> checkBiometric() async {
-    final fingerprintIsActive = await fingerprintIsActiveUseCase();
+    final fingerprintIsActive =  getFingerprintIsActiveUseCase();
     if (fingerprintIsActive) {
       final _localAuth = LocalAuthentication();
       final canCheckBiometrics = await _localAuth.canCheckBiometrics;
