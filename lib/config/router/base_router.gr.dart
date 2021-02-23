@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../src/domain/models/result/post.dart';
+import '../../src/ui/pages/animation/example_animation_page.dart';
 import '../../src/ui/pages/post/post_page.dart';
 import '../../src/ui/pages/posts/posts_page.dart';
 import '../../src/ui/pages/splash/splash_page.dart';
@@ -18,10 +19,12 @@ class Routes {
   static const String splashPage = '/';
   static const String postsPage = '/posts-page';
   static const String postPage = '/post-page';
+  static const String exampleAnimationPage = '/example-animation-page';
   static const all = <String>{
     splashPage,
     postsPage,
     postPage,
+    exampleAnimationPage,
   };
 }
 
@@ -32,6 +35,7 @@ class BaseRouter extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.postsPage, page: PostsPage),
     RouteDef(Routes.postPage, page: PostPage),
+    RouteDef(Routes.exampleAnimationPage, page: ExampleAnimationPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -55,6 +59,12 @@ class BaseRouter extends RouterBase {
         settings: data,
       );
     },
+    ExampleAnimationPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ExampleAnimationPage(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -74,6 +84,9 @@ extension BaseRouterExtendedNavigatorStateX on ExtendedNavigatorState {
         Routes.postPage,
         arguments: PostPageArguments(post: post),
       );
+
+  Future<dynamic> pushExampleAnimationPage() =>
+      push<dynamic>(Routes.exampleAnimationPage);
 }
 
 /// ************************************************************************

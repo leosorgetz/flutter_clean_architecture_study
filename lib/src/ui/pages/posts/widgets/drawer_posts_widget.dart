@@ -47,17 +47,34 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 ),
               ),
             ),
+            _buildListTile(
+              leading: Icon(Icons.remove_red_eye_outlined),
+              title: 'Pudim',
+              onTap: controller.navigateToAnimationPage,
+            ),
             Observer(builder: (context) {
-              return ListTile(
+              return _buildListTile(
                 trailing: AppSwitchWidget(
                   value: controller.status,
                   onChanged: controller.activateFingerprint,
                 ),
                 leading: Text('Configurações'),
-                // trailing: Icon(Icons.settings),
               );
             }),
           ],
         ),
+      );
+
+  Widget _buildListTile({
+    Widget trailing,
+    Widget leading,
+    String title,
+    Function onTap,
+  }) =>
+      ListTile(
+        trailing: trailing,
+        leading: leading,
+        title: title != null ? Text(title) : Offstage(),
+        onTap: onTap,
       );
 }

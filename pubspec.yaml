@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_staggered_animations: ^0.1.2
   local_auth: ^0.6.3+4
   shared_preferences: ^0.5.12+4
   intl: ^0.16.1

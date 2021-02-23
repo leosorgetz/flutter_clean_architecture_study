@@ -4,6 +4,7 @@ import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_pull_to_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class PostsPage extends StatefulWidget {
   const PostsPage();
@@ -42,22 +43,33 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
 
   Widget buildSuccess() {
     final posts = controller.postsObservable?.value ?? [];
-    return PullToRefreshWidget(
-      onRefresh: () {
-        controller.getPosts();
-      },
-      child: ListView.builder(
-        itemCount: posts.length,
-        itemBuilder: (_, index) {
-          final post = posts[index];
-          return ListTile(
-            title: Text(post.title),
-            enabled: true,
-            onTap: () {
-              controller.goToDetails(post);
-            },
-          );
+    return AnimationLimiter(
+      child: PullToRefreshWidget(
+        onRefresh: () {
+          controller.getPosts();
         },
+        child: ListView.builder(
+          itemCount: posts.length,
+          itemBuilder: (_, index) {
+            final post = posts[index];
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 250),
+              child: SlideAnimation(
+                verticalOffset: 100,
+                child: FadeInAnimation(
+                  child: ListTile(
+                    title: Text(post.title),
+                    enabled: true,
+                    onTap: () {
+                      controller.goToDetails(post);
+                    },
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
