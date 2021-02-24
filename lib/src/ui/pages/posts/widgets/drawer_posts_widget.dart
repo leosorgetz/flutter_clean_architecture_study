@@ -49,7 +49,7 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
             ),
             _buildListTile(
               leading: Icon(Icons.remove_red_eye_outlined),
-              title: 'Pudim',
+              title: 'Animation example',
               onTap: controller.navigateToAnimationPage,
             ),
             Observer(builder: (context) {
@@ -58,7 +58,7 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                   value: controller.status,
                   onChanged: controller.activateFingerprint,
                 ),
-                leading: Text('Configurações'),
+                leading: Text('Ativar biometria'),
               );
             }),
           ],

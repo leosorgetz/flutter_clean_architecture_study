@@ -51,8 +51,9 @@ import '../../src/domain/utils/app_storage_client/app_storage_client.dart'
     as _i37;
 import '../../src/domain/utils/app_storage_client/app_storage_client_interface.dart'
     as _i22;
-import '../../src/ui/pages/animation/example_animation_controller.dart' as _i5;
 import '../../src/ui/pages/example/example_controller.dart' as _i6;
+import '../../src/ui/pages/example_animation/example_animation_controller.dart'
+    as _i5;
 import '../../src/ui/pages/post/post_controller.dart' as _i33;
 import '../../src/ui/pages/posts/posts_controller.dart' as _i16;
 import '../../src/ui/pages/posts/widgets/drawer_posts_controller.dart' as _i35;

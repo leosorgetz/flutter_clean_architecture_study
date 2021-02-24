@@ -1,4 +1,4 @@
-import 'package:estudo_app/src/ui/pages/animation/example_animation_controller.dart';
+import 'package:estudo_app/src/ui/pages/example_animation/example_animation_controller.dart';
 import 'package:estudo_app/src/ui/utils/helpers/sizes_helper.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:flutter/material.dart';
@@ -54,16 +54,25 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
         ),
         _buildSpace(),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildContainer(
-              color: Colors.blueAccent,
+            Expanded(
+              child: _buildContainer(
+                color: Colors.blueAccent,
+                autoWidth: true,
+              ),
             ),
-            _buildContainer(
-              color: Colors.red,
+            Expanded(
+              child: _buildContainer(
+                color: Colors.red,
+                autoWidth: true,
+              ),
             ),
-            _buildContainer(
-              color: Colors.green,
+            Expanded(
+              child: _buildContainer(
+                color: Colors.green,
+                autoWidth: true,
+              ),
             ),
           ],
         ),
@@ -74,13 +83,15 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
     @required Color color,
     double width,
     double height,
+    bool autoWidth = false,
   }) {
     return Container(
+      margin: autoWidth ? EdgeInsets.symmetric(horizontal: 10) : null,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: color,
       ),
-      width: width ?? 100,
+      width: width != null && !autoWidth ? width : null,
       height: height ?? 100,
     );
   }
