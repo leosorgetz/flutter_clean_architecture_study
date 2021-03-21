@@ -123,7 +123,7 @@ linter:
     - slash_for_doc_comments
     - sort_child_properties_last
     # - sort_constructors_first
-    - sort_pub_dependencies
+#    - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
@@ -160,7 +160,7 @@ analyzer:
     - generator/**.dart
 
   errors:
-#    avoid_as: error
+    # avoid_as: error
     always_declare_return_types: error
     # always_put_control_body_on_new_line: error
     always_put_required_named_parameters_first: error
@@ -229,7 +229,6 @@ analyzer:
     literal_only_boolean_expressions: error
     no_adjacent_strings_in_list: error
     no_duplicate_case_values: error
-    #    @todo descomentar linha abaixo apos mudar a api
     #    non_constant_identifier_names: error
     null_closures: error
     omit_local_variable_types: error
@@ -283,7 +282,7 @@ analyzer:
     slash_for_doc_comments: error
     sort_child_properties_last: error
     # sort_constructors_first: error
-    sort_pub_dependencies: error
+#    sort_pub_dependencies: error
     sort_unnamed_constructors_first: error
     test_types_in_equals: error
     throw_in_finally: error

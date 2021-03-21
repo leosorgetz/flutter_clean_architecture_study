@@ -2,12 +2,12 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'post.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable()
 class Post {
-  final int userId;
-  final int id;
-  final String title;
-  final bool completed;
+  final int? userId;
+  final int? id;
+  final String? title;
+  final bool? completed;
 
   Post({this.userId, this.id, this.title, this.completed});
 

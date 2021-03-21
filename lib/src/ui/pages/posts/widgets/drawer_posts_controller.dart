@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:estudo_app/src/domain/data_sources/set_fingerprint_is_active/set_fingerprint_is_active_data_source_interface.dart';
 import 'package:estudo_app/src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
 

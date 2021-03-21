@@ -1,16 +1,16 @@
-import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+// import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PullToRefreshWidget extends StatelessWidget {
   final Widget child;
   final Function onRefresh;
-  final _refreshController = RefreshController();
 
-  PullToRefreshWidget({this.child, this.onRefresh});
+  // final _refreshController = RefreshController();
 
-  @override
+  const PullToRefreshWidget({this.child, this.onRefresh});
+
+  /*@override
   Widget build(BuildContext context) => SmartRefresher(
         header: const MaterialClassicHeader(
           color: Colors.white,
@@ -23,6 +23,10 @@ class PullToRefreshWidget extends StatelessWidget {
           await onRefresh.call();
           _refreshController.refreshCompleted();
         },
+        child: child,
+      );*/
+  @override
+  Widget build(BuildContext context) => Container(
         child: child,
       );
 

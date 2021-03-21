@@ -68,7 +68,7 @@ import 'register_module.dart' as _i38; // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
 Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
-    {String environment, _i2.EnvironmentFilter environmentFilter}) async {
+    {String? environment, _i2.EnvironmentFilter? environmentFilter}) async {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final registerModule = _$RegisterModule();
   gh.factory<_i3.AppController>(() => _i3.AppController());
