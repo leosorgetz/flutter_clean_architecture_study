@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:estudo_app/src/domain/models/result/post.dart';
 import 'package:estudo_app/src/ui/pages/post/post_controller.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
@@ -5,6 +7,7 @@ import 'package:estudo_app/src/ui/utils/widgets/app_button_widget.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_date_input.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_text_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class PostPage extends StatefulWidget {
   final Post post;
@@ -32,29 +35,39 @@ class _PostPageState extends BaseState<PostPage, PostController> {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            AppTextInput(
-              labelText: 'Input',
-              onChanged: (String text) {
-                setState(() {
-                  controller.text = text;
-                });
-              },
-            ),
+            Observer(builder: (context) {
+              return AppTextInput(
+                labelText: 'Input',
+                // onChanged: (String text) {
+                //   setState(() {
+                //     controller.text = text;
+                //   });
+                // },
+                value: controller.text,
+                onChanged: controller.setText,
+              );
+            }),
             SizedBox(height: 10),
-            AppDateInput(
-              labelText: 'Data de nascimento',
-              value: controller.dateTime,
-              onChanged: (DateTime date) {
-                setState(() {
-                  controller.dateTime = date;
-                });
-              },
-            ),
+            Observer(builder: (context) {
+              return AppDateInput(
+                labelText: 'Data de nascimento',
+                value: controller.dateTime,
+                // onChanged: (DateTime date) {
+                //   setState(() {
+                //     controller.dateTime = date;
+                //   });
+                // },
+                onChanged: controller.setDateTime,
+              );
+            }),
             SizedBox(height: 10),
-            AppButtonWidget(
-              text: 'Click',
-              onPressed: controller.canShowValue ? controller.showText : null,
-            ),
+            Observer(builder: (context) {
+              log('asdasdas');
+              return AppButtonWidget(
+                text: 'Click',
+                onPressed: controller.canShowValue ? controller.showText : null,
+              );
+            }),
           ],
         ),
       ),

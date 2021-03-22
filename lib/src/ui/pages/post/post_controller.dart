@@ -15,8 +15,14 @@ abstract class _PostControllerBase with Store {
   final RetryHelper retryHelper;
   final ToastHelper toastHelper;
   Post? post;
-  DateTime dateTime = DateTime.now();
-  String text = 'teste';
+  @observable
+  bool canShowValue = false;
+
+  @observable
+  DateTime? dateTime;
+
+  @observable
+  String? text;
 
   _PostControllerBase(
     this.dateTimeHelper,
@@ -28,6 +34,26 @@ abstract class _PostControllerBase with Store {
     this.post = post;
   }
 
+  @action
+  void setText(String value) {
+    if (dateTime != null && text != null) {
+      canShowValue = true;
+    } else {
+      canShowValue = false;
+    }
+    text = value;
+  }
+
+  @action
+  void setDateTime(DateTime value) {
+    if (dateTime != null && text != null) {
+      canShowValue = true;
+    } else {
+      canShowValue = false;
+    }
+    dateTime = value;
+  }
+
   Future<void> doRetry() async {
     toastHelper.show('Oi');
     await retryHelper.testRetry(timeToRetry: 2, maximumAttempts: 4);
@@ -35,14 +61,20 @@ abstract class _PostControllerBase with Store {
   }
 
   void showText() {
-    toastHelper.show('$text-${dateTimeHelper.formatToDMY(dateTime)}');
+    toastHelper.show('$text-${dateTimeHelper.formatToDMY(dateTime!)}');
   }
 
-  @computed
-  bool get canShowValue {
-    if (dateTime.toString().isNotEmpty && text.isNotEmpty) {
-      return true;
-    }
-    return false;
-  }
+// @computed
+// bool get canShowValue {
+// log(dateTime.toString());
+// log(text!);
+// if (dateTime.toString().isNotEmpty && (text != null || text!.isNotEmpty)) {
+// if (dateTime.toString().isNotEmpty && text!.isNotEmpty) {
+// if (text != null) {
+// if (dateTime.toString().isNotEmpty) {
+// if (text!.isNotEmpty) {
+//   return true;
+// }
+// return false;
+// }
 }
