@@ -1,24 +1,21 @@
-import 'package:estudo_app/src/ui/utils/constants/app_text_styles.dart';
 import 'package:estudo_app/src/ui/utils/helpers/date_time_helper.dart';
-import 'package:estudo_app/src/ui/utils/widgets/app_text_input.dart';
 import 'package:flutter/material.dart';
-import 'package:platform_date_picker/platform_date_picker.dart';
 
 class AppDateInput extends StatefulWidget {
-  final Function validator;
-  final Function onChanged;
+  final Function? validator;
+  final Function? onChanged;
   final DateTime value;
   final String labelText;
-  final FocusNode currentFocusNode;
-  final FocusNode nextFocusNode;
+  final FocusNode? currentFocusNode;
+  final FocusNode? nextFocusNode;
   final bool readOnly;
 
   @override
   _AppDateInputState createState() => _AppDateInputState();
 
   const AppDateInput({
-    @required this.labelText,
-    @required this.value,
+    required this.labelText,
+    required this.value,
     this.validator,
     this.onChanged,
     this.currentFocusNode,
@@ -36,6 +33,8 @@ class _AppDateInputState extends State<AppDateInput> {
   }
 
   @override
+  Widget build(BuildContext context) => Container();
+/*@override
   Widget build(BuildContext context) => AppTextInput(
         onTap: () async {
           final date = await PlatformDatePicker.showDate(
@@ -61,5 +60,5 @@ class _AppDateInputState extends State<AppDateInput> {
         textInputAction: null,
         textInputType: null,
         readOnly: widget.readOnly,
-      );
+      );*/
 }

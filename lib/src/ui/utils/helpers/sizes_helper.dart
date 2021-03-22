@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 
 class SizesHelper {
   static double getHeight() {
-    ExtendedNavigator.root.context;
-    final currentContext = ExtendedNavigator.root.context;
+    ExtendedNavigator.root!.context;
+    final currentContext = ExtendedNavigator.root!.context;
     return MediaQuery.of(currentContext).size.height;
   }
 
   static double getWidth() {
-    final currentContext = ExtendedNavigator.root.context;
+    final currentContext = ExtendedNavigator.root!.context;
     return MediaQuery.of(currentContext).size.height;
   }
 
   static double getStatusBarHeight() {
-    final currentContext = ExtendedNavigator.root.context;
+    final currentContext = ExtendedNavigator.root!.context;
     return MediaQuery.of(currentContext).size.height;
   }
 
   static double getBottomSheetHeight() {
-    final currentContext = ExtendedNavigator.root.context;
+    final currentContext = ExtendedNavigator.root!.context;
     return MediaQuery.of(currentContext).size.height;
   }
 

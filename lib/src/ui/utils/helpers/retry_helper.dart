@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 @injectable
 class RetryHelper {
   Future<void> testRetry({
-    int timeToRetry,
-    int maximumAttempts,
+    required int timeToRetry,
+    required int maximumAttempts,
   }) async {
     var currentAttempts = 0;
     await Future.doWhile(() async {

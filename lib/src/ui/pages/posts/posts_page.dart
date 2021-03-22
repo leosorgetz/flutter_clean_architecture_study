@@ -59,10 +59,10 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
                 verticalOffset: 100,
                 child: FadeInAnimation(
                   child: ListTile(
-                    title: Text(post.title),
+                    title: Text(post.title!),
                     enabled: true,
                     onTap: () {
-                      controller.goToDetails(post);
+                      controller.goToDetails(post, context: context);
                     },
                   ),
                 ),
@@ -81,7 +81,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
       },
       child: Container(
         child: Center(
-          child: Text(controller.postsObservable.error.toString()),
+          child: Text(controller.postsObservable!.error.toString()),
         ),
       ),
     );

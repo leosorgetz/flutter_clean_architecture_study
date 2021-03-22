@@ -5,11 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppSwitchWidget extends StatelessWidget {
-  final Function onChanged;
+  final Function(bool)? onChanged;
   final bool value;
 
   const AppSwitchWidget({
-    @required this.value,
+    required this.value,
     this.onChanged,
   }) : super();
 

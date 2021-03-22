@@ -55,7 +55,7 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
             Observer(builder: (context) {
               return _buildListTile(
                 trailing: AppSwitchWidget(
-                  value: controller.status,
+                  value: controller.status!,
                   onChanged: controller.activateFingerprint,
                 ),
                 leading: Text('Ativar biometria'),
@@ -66,10 +66,10 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
       );
 
   Widget _buildListTile({
-    Widget trailing,
-    Widget leading,
-    String title,
-    Function onTap,
+    Widget? trailing,
+    Widget? leading,
+    String? title,
+    Function()? onTap,
   }) =>
       ListTile(
         trailing: trailing,

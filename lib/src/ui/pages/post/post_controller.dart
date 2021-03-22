@@ -14,9 +14,9 @@ abstract class _PostControllerBase with Store {
   final DateTimeHelper dateTimeHelper;
   final RetryHelper retryHelper;
   final ToastHelper toastHelper;
-  Post post;
-  DateTime dateTime;
-  String text;
+  Post? post;
+  DateTime dateTime = DateTime.now();
+  String text = 'teste';
 
   _PostControllerBase(
     this.dateTimeHelper,
@@ -40,10 +40,8 @@ abstract class _PostControllerBase with Store {
 
   @computed
   bool get canShowValue {
-    if (dateTime != null && text != null) {
-      if (dateTime.toString().isNotEmpty && text.isNotEmpty) {
-        return true;
-      }
+    if (dateTime.toString().isNotEmpty && text.isNotEmpty) {
+      return true;
     }
     return false;
   }

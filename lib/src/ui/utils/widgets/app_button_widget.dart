@@ -6,17 +6,17 @@ class AppButtonWidget extends StatelessWidget {
   final Color borderColor;
   final Color color;
   final String text;
-  final Function onPressed;
+  final Function()? onPressed;
   final EdgeInsetsGeometry padding;
-  final Widget widget;
+
+  // final Widget widget;
   final TextStyle textStyle;
 
   const AppButtonWidget({
-    @required this.text,
-    @required this.onPressed,
-    this.padding,
-    this.widget,
-    this.color,
+    required this.text,
+    this.padding = const EdgeInsets.all(10),
+    this.onPressed,
+    this.color = AppColors.primaryColor,
     this.borderColor = Colors.transparent,
     this.textStyle = AppTextStyle.textWhite,
   }) : super();
@@ -27,7 +27,7 @@ class AppButtonWidget extends StatelessWidget {
         onPressed: onPressed,
         padding: padding,
         height: 40,
-        color: color ?? AppColors.primaryColor,
+        color: color,
         elevation: 1,
         disabledColor: AppColors.mono3,
         shape: const RoundedRectangleBorder(
@@ -37,11 +37,10 @@ class AppButtonWidget extends StatelessWidget {
           ),
         ),
         minWidth: double.infinity,
-        child: widget ??
-            Text(
-              text,
-              style: onPressed != null ? AppTextStyle.textWhite : AppTextStyle.textMono2,
-              textAlign: TextAlign.center,
-            ),
+        child: Text(
+          text,
+          style: onPressed != null ? AppTextStyle.textWhite : AppTextStyle.textMono2,
+          textAlign: TextAlign.center,
+        ),
       );
 }

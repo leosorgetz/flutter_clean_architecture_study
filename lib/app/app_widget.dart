@@ -50,7 +50,10 @@ class _AppWidgetState extends BaseState<AppWidget, AppController> {
     );
   }
 }*/
+import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
+// import '../config/router/base_router.gr.dart';
 
 class AppWidget extends StatelessWidget {
   // final _baseRouter = BaseRouter();
@@ -79,7 +82,7 @@ class AppWidget extends StatelessWidget {
     );
   }*/
 
-  @override
+  /*@override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -88,6 +91,18 @@ class AppWidget extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
+    );
+  }*/
+
+  final _appRouter = AppRouter();
+
+  @override
+  Widget build(BuildContext context) {
+    return OKToast(
+      child: MaterialApp.router(
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+      ),
     );
   }
 }

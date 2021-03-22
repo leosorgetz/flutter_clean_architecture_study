@@ -1,16 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PullToRefreshWidget extends StatelessWidget {
   final Widget child;
   final Function onRefresh;
 
-  // final _refreshController = RefreshController();
+  const PullToRefreshWidget({required this.child, required this.onRefresh});
 
-  const PullToRefreshWidget({this.child, this.onRefresh});
+  /*
+  final _refreshController = RefreshController();
 
-  /*@override
+  todo - migrate to v2
+  @override
   Widget build(BuildContext context) => SmartRefresher(
         header: const MaterialClassicHeader(
           color: Colors.white,
@@ -25,6 +26,7 @@ class PullToRefreshWidget extends StatelessWidget {
         },
         child: child,
       );*/
+
   @override
   Widget build(BuildContext context) => Container(
         child: child,

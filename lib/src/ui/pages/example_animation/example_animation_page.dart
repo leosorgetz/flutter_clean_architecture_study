@@ -80,9 +80,9 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
       ]);
 
   Widget _buildContainer({
-    @required Color color,
-    double width,
-    double height,
+    required Color color,
+    double? width,
+    double? height,
     bool autoWidth = false,
   }) {
     return Container(

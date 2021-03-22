@@ -17,7 +17,7 @@ abstract class _SplashControllerBase with Store {
   final message = 'Autentique para entrar no app.';
 
   @observable
-  String errorMessage;
+  String? errorMessage;
 
   _SplashControllerBase(
     this.toastHelper,
@@ -28,7 +28,7 @@ abstract class _SplashControllerBase with Store {
   void setErrorMessage(String errorMessage) => this.errorMessage = errorMessage;
 
   Future<void> checkBiometric() async {
-    final fingerprintIsActive =  getFingerprintIsActiveUseCase();
+    final fingerprintIsActive = getFingerprintIsActiveUseCase();
     if (fingerprintIsActive) {
       final _localAuth = LocalAuthentication();
       final canCheckBiometrics = await _localAuth.canCheckBiometrics;
@@ -40,7 +40,9 @@ abstract class _SplashControllerBase with Store {
               localizedReason: message,
             );
             if (didAuthenticate) {
-              ExtendedNavigator.root.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+              // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+              AutoRouter.of(ExtendedNavigator.root!.context)
+                  .pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
             } else {
               setErrorMessage('Não Autenticou.');
               return;
@@ -55,7 +57,9 @@ abstract class _SplashControllerBase with Store {
               localizedReason: message,
             );
             if (didAuthenticate) {
-              ExtendedNavigator.root.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+              // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+              AutoRouter.of(ExtendedNavigator.root!.context)
+                  .pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
             } else {
               setErrorMessage('Não Autenticou.');
               return;
@@ -66,10 +70,12 @@ abstract class _SplashControllerBase with Store {
         }
       } else {
         setErrorMessage('Não existe biometria para usar.');
-        ExtendedNavigator.root.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+        // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+        AutoRouter.of(ExtendedNavigator.root!.context).pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
       }
     } else {
-      ExtendedNavigator.root.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+      // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
+      AutoRouter.of(ExtendedNavigator.root!.context).pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
     }
   }
 }

@@ -1,56 +1,53 @@
-import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
-import 'package:estudo_app/src/ui/utils/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 
 class AppTextInput extends StatefulWidget {
   final Function onChanged;
-  final Function onSaved;
   final String labelText;
-  final FocusNode currentFocusNode;
-  final FocusNode nextFocusNode;
-  final TextInputAction textInputAction;
-  final Function onFieldSubmitted;
-  final TextInputType textInputType;
-  final bool obscureText;
-  final Function validator;
-  final String initialValue;
-  final bool readOnly;
-  final String value;
-  final TextStyle textStyle;
-  final String suffixIconPath;
-  final Function suffixIconPathOnTap;
-  final InputBorder border;
-  final bool autoFocus;
-  final TextAlign textAlign;
-  final Function onTap;
-  final TextEditingController controller;
-  final List<TextInputFormatter> textInputFormatters;
+
+  // final Function onSaved;
+  // final FocusNode currentFocusNode;
+  // final FocusNode nextFocusNode;
+  // final TextInputAction textInputAction;
+  // final Function onFieldSubmitted;
+  // final TextInputType textInputType;
+  // final bool obscureText;
+  // final Function validator;
+  // final String initialValue;
+  // final bool readOnly;
+  // final String value;
+  // final TextStyle textStyle;
+  // final String suffixIconPath;
+  // final Function suffixIconPathOnTap;
+  // final InputBorder border;
+  // final bool autoFocus;
+  // final TextAlign textAlign;
+  // final Function onTap;
+  // final TextEditingController controller;
+  // final List<TextInputFormatter> textInputFormatters;
 
   const AppTextInput({
-    this.textInputAction,
-    this.textInputType,
-    this.value,
-    this.initialValue,
-    this.controller,
-    this.onChanged,
-    this.labelText,
-    this.textStyle,
-    this.currentFocusNode,
-    this.nextFocusNode,
-    this.obscureText = false,
-    this.validator,
-    this.onFieldSubmitted,
-    this.readOnly = false,
-    this.onSaved,
-    this.border,
-    this.textInputFormatters,
-    this.suffixIconPath,
-    this.textAlign = TextAlign.start,
-    this.autoFocus = false,
-    this.suffixIconPathOnTap,
-    this.onTap,
+    required this.onChanged,
+    required this.labelText,
+    // this.textInputAction,
+    // this.textInputType,
+    // this.value,
+    // this.initialValue,
+    // this.controller,
+    // this.textStyle,
+    // this.currentFocusNode,
+    // this.nextFocusNode,
+    // this.obscureText = false,
+    // this.validator,
+    // this.onFieldSubmitted,
+    // this.readOnly = false,
+    // this.onSaved,
+    // this.border,
+    // this.textInputFormatters,
+    // this.suffixIconPath,
+    // this.textAlign = TextAlign.start,
+    // this.autoFocus = false,
+    // this.suffixIconPathOnTap,
+    // this.onTap,
   }) : super();
 
   @override
@@ -58,15 +55,23 @@ class AppTextInput extends StatefulWidget {
 }
 
 class _AppTextInputState extends State<AppTextInput> {
-  bool showEye;
+  // bool showEye;
 
   @override
+  Widget build(BuildContext context) => TextFormField(
+        decoration: InputDecoration(
+          hintText: '',
+          labelText: widget.labelText,
+        ),
+      );
+
+/*@override
   void initState() {
     super.initState();
     showEye = widget.obscureText;
-  }
+  }*/
 
-  @override
+/*@override
   Widget build(BuildContext context) => Container(
         child: TextFormField(
           textAlign: widget.textAlign,
@@ -105,9 +110,9 @@ class _AppTextInputState extends State<AppTextInput> {
             _fieldFocusChange(context, widget.currentFocusNode, widget.nextFocusNode);
           },
         ),
-      );
+      );*/
 
-  Widget _setEye() {
+/*Widget _setEye() {
     if (widget.obscureText) {
       return GestureDetector(
         onTap: () {
@@ -133,9 +138,9 @@ class _AppTextInputState extends State<AppTextInput> {
       );
     }
     return null;
-  }
+  }*/
 
-  Widget _setIcon() {
+/*Widget _setIcon() {
     if (widget.suffixIconPathOnTap != null && widget.suffixIconPath != null) {
       return InkWell(
         onTap: widget.suffixIconPathOnTap,
@@ -151,17 +156,17 @@ class _AppTextInputState extends State<AppTextInput> {
       );
     }
     return null;
-  }
+  }*/
 
-  void _fieldFocusChange(BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+/*void _fieldFocusChange(BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
     currentFocus.unfocus();
 
     if (nextFocus != null) {
       FocusScope.of(context).requestFocus(nextFocus);
     }
-  }
+  }*/
 
-  TextStyle _setTextStyle() {
+/*TextStyle _setTextStyle() {
     if (widget.textStyle != null) {
       return widget.textStyle;
     }
@@ -169,5 +174,5 @@ class _AppTextInputState extends State<AppTextInput> {
       return AppTextStyle.textDisable;
     }
     return AppTextStyle.textBlack;
-  }
+  }*/
 }

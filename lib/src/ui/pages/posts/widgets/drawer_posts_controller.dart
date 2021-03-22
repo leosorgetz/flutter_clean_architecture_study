@@ -15,7 +15,7 @@ abstract class _DrawerControllerPostsBase with Store {
   ISetFingerprintIsActiveDataSource setFingerprintIsActiveDataSource;
 
   @observable
-  bool status;
+  bool? status;
 
   void setStatus(bool status) => this.status = status;
 
@@ -29,7 +29,7 @@ abstract class _DrawerControllerPostsBase with Store {
     this.setFingerprintIsActiveDataSource,
   ) {
     final status = getFingerprintIsActiveUseCase();
-    if (status == null) {
+    if (status) {
       setStatus(false);
       return;
     }
@@ -37,7 +37,8 @@ abstract class _DrawerControllerPostsBase with Store {
   }
 
   void navigateToAnimationPage() {
-    ExtendedNavigator.root.pop();
-    ExtendedNavigator.root.push(Routes.exampleAnimationPage);
+    ExtendedNavigator.root!.pop();
+    // ExtendedNavigator.root!.push(Routes.exampleAnimationPage);
+    AutoRouter.of(ExtendedNavigator.root!.context).push(ExampleAnimationRoute());
   }
 }

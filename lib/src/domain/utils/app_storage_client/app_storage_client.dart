@@ -9,8 +9,8 @@ class AppStorageClient implements IAppStorageClient {
   AppStorageClient(this._sharedPreferences);
 
   @override
-  String getString(String key) {
-    return _sharedPreferences.get(key);
+  String? getString(String key) {
+    return _sharedPreferences.getString(key);
   }
 
   @override
@@ -19,7 +19,7 @@ class AppStorageClient implements IAppStorageClient {
   }
 
   @override
-  bool getBool(String key) {
+  bool? getBool(String key) {
     return _sharedPreferences.getBool(key);
   }
 
@@ -29,7 +29,7 @@ class AppStorageClient implements IAppStorageClient {
   }
 
   @override
-  int getInt(String key) {
+  int? getInt(String key) {
     return _sharedPreferences.getInt(key);
   }
 
@@ -39,7 +39,7 @@ class AppStorageClient implements IAppStorageClient {
   }
 
   @override
-  double getDouble(String key) {
+  double? getDouble(String key) {
     return _sharedPreferences.getDouble(key);
   }
 

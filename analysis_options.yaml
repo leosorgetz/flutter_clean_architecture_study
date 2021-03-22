@@ -73,7 +73,7 @@ linter:
     #    - non_constant_identifier_names
     - null_closures
     - omit_local_variable_types
-#    - one_member_abstracts
+    #    - one_member_abstracts
     - only_throw_errors
     - overridden_fields
     - package_api_docs
@@ -96,7 +96,7 @@ linter:
     # - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_final_in_for_each
-    - prefer_final_locals
+#    - prefer_final_locals
     - prefer_for_elements_to_map_fromIterable
     - prefer_foreach
     - prefer_function_declarations_over_variables
@@ -123,7 +123,7 @@ linter:
     - slash_for_doc_comments
     - sort_child_properties_last
     # - sort_constructors_first
-#    - sort_pub_dependencies
+    #    - sort_pub_dependencies
     - sort_unnamed_constructors_first
     - test_types_in_equals
     - throw_in_finally
@@ -156,7 +156,8 @@ linter:
 analyzer:
   exclude:
     - lib/**.g.dart
-    - lib/config/**.dart
+    - lib/config/**.config.dart
+#    - lib/config/**.gr.dart
     - generator/**.dart
 
   errors:
@@ -232,7 +233,7 @@ analyzer:
     #    non_constant_identifier_names: error
     null_closures: error
     omit_local_variable_types: error
-#    one_member_abstracts: error
+    #    one_member_abstracts: error
     only_throw_errors: error
     overridden_fields: error
     package_api_docs: error
@@ -255,7 +256,7 @@ analyzer:
     # prefer_expression_function_bodies: error
     prefer_final_fields: error
     prefer_final_in_for_each: error
-    prefer_final_locals: error
+#    prefer_final_locals: error
     prefer_for_elements_to_map_fromIterable: error
     prefer_foreach: error
     prefer_function_declarations_over_variables: error
@@ -282,7 +283,7 @@ analyzer:
     slash_for_doc_comments: error
     sort_child_properties_last: error
     # sort_constructors_first: error
-#    sort_pub_dependencies: error
+    #    sort_pub_dependencies: error
     sort_unnamed_constructors_first: error
     test_types_in_equals: error
     throw_in_finally: error

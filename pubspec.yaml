@@ -20,7 +20,7 @@ dependencies:
   json_serializable: ^4.1.0
   mobx: ^2.0.0-nullsafety.5
   auto_route: ^1.0.2
-  injectable: ^1.0.7
+  injectable: ^1.2.2
   get_it: ^6.0.0
   flutter_mobx: ^2.0.0-nullsafety.3
   oktoast: ^3.0.0
