@@ -12,7 +12,7 @@ part 'posts_controller.g.dart';
 class PostsController = _PostsControllerBase with _$PostsController;
 
 abstract class _PostsControllerBase with Store {
-  final IGetPostsUseCase? _getPostsUseCase;
+  final IGetPostsUseCase _getPostsUseCase;
 
   @observable
   ObservableFuture<List<Post>>? postsObservable;
@@ -32,7 +32,7 @@ abstract class _PostsControllerBase with Store {
 
   @action
   Future<void> getPosts() async {
-    postsObservable = _getPostsUseCase!().asObservable();
+    postsObservable = _getPostsUseCase().asObservable();
   }
 
   Future<void> goToDetails(Post post, {required BuildContext context}) async {

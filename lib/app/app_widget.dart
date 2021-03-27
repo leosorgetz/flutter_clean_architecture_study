@@ -51,6 +51,7 @@ class _AppWidgetState extends BaseState<AppWidget, AppController> {
   }
 }*/
 import 'package:estudo_app/config/router/base_router.gr.dart';
+import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 // import '../config/router/base_router.gr.dart';
@@ -102,6 +103,24 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
+        theme: ThemeData(
+          primaryColor: AppColors.primaryColor,
+        ),
+        builder: (context, widget) {
+          final data = MediaQuery.of(context);
+          return MediaQuery(
+            data: data.copyWith(
+              textScaleFactor: 1,
+            ),
+            child: Theme(
+              data: ThemeData(
+                primaryColor: AppColors.primaryColor,
+              ),
+              child: widget!,
+            ),
+          );
+          // return widget!;
+        },
       ),
     );
   }

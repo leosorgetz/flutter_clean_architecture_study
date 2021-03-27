@@ -81,6 +81,7 @@ class _AppTextInputState extends State<AppTextInput> {
         ),
         onTap: widget.onTap,
         readOnly: widget.readOnly,
+        onChanged: widget.onChanged,
       );
 
   @override

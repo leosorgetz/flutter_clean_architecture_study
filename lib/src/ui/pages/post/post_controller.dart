@@ -16,9 +16,6 @@ abstract class _PostControllerBase with Store {
   final ToastHelper toastHelper;
   Post? post;
   @observable
-  bool canShowValue = false;
-
-  @observable
   DateTime? dateTime;
 
   @observable
@@ -36,21 +33,11 @@ abstract class _PostControllerBase with Store {
 
   @action
   void setText(String value) {
-    if (dateTime != null && text != null) {
-      canShowValue = true;
-    } else {
-      canShowValue = false;
-    }
     text = value;
   }
 
   @action
   void setDateTime(DateTime value) {
-    if (dateTime != null && text != null) {
-      canShowValue = true;
-    } else {
-      canShowValue = false;
-    }
     dateTime = value;
   }
 
@@ -64,17 +51,12 @@ abstract class _PostControllerBase with Store {
     toastHelper.show('$text-${dateTimeHelper.formatToDMY(dateTime!)}');
   }
 
-// @computed
-// bool get canShowValue {
-// log(dateTime.toString());
-// log(text!);
-// if (dateTime.toString().isNotEmpty && (text != null || text!.isNotEmpty)) {
-// if (dateTime.toString().isNotEmpty && text!.isNotEmpty) {
-// if (text != null) {
-// if (dateTime.toString().isNotEmpty) {
-// if (text!.isNotEmpty) {
-//   return true;
-// }
-// return false;
-// }
+  @computed
+  bool get canShowValue {
+    // if (dateTime.toString().isNotEmpty && (text != null || text!.isNotEmpty)) {
+    if (dateTime != null && text != null) {
+      return true;
+    }
+    return false;
+  }
 }

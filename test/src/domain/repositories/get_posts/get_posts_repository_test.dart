@@ -7,12 +7,14 @@ import '../../../utils/mocked_classes.dart';
 import '../../../utils/mocked_objects.dart';
 
 void main() {
-  final dataSource = GetPostsDataSourceMock();
+  final dataSource = MockedClasses.getPostsDataSourceMock;
   final repository = GetPostsRepository(dataSource);
   final list = <Post>[
     MockedObjects.getMockedPost(),
     MockedObjects.getMockedPost(),
   ];
+
+  setUp(() {});
 
   group('Get Posts Repository Tests', () {
     test('[Repository] - Deve retornar uma Lista de Posts para popular a listagem de posts', () async {

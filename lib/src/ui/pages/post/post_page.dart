@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:estudo_app/src/domain/models/result/post.dart';
 import 'package:estudo_app/src/ui/pages/post/post_controller.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
@@ -62,10 +60,10 @@ class _PostPageState extends BaseState<PostPage, PostController> {
             }),
             SizedBox(height: 10),
             Observer(builder: (context) {
-              log('asdasdas');
               return AppButtonWidget(
                 text: 'Click',
                 onPressed: controller.canShowValue ? controller.showText : null,
+                // onPressed: controller.showText,
               );
             }),
           ],
