@@ -35,25 +35,24 @@ class _AppDateInputState extends State<AppDateInput> {
     super.initState();
   }
 
-  /*@override
-  Widget build(BuildContext context) => Container();*/
   @override
   Widget build(BuildContext context) => AppTextInput(
         onTap: () async {
-          final date = await PlatformDatePicker.showDate(
+          final now = DateTime.now();
+          final date = await showPlatformDatePicker(
             context: context,
             firstDate: DateTime.parse('1900-01-01'),
-            initialDate: widget.value ?? DateTime.now(),
+            initialDate: widget.value ?? now,
             lastDate: DateTime(
-              DateTime.now().year.toInt() + DateTime.now().month.toInt() + DateTime.now().day.toInt(),
+              now.year.toInt() + now.month.toInt() + now.day.toInt(),
             ),
           );
           setState(() {
-            widget.onChanged!(date);
+            widget.onChanged!(date ?? now);
           });
         },
         controller: TextEditingController(
-          text: widget.value != null ? dateTimeHelper.formatToDMY(widget.value!) : '',
+          text: widget.value != null ? dateTimeHelper.formatToDMY(widget.value!) : null,
         ),
         textStyle: AppTextStyle.textBlack,
         labelText: widget.labelText,

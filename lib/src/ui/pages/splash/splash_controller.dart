@@ -36,7 +36,7 @@ abstract class _SplashControllerBase with Store {
         final availableBiometrics = await _localAuth.getAvailableBiometrics();
         if (availableBiometrics.contains(BiometricType.face)) {
           try {
-            final didAuthenticate = await _localAuth.authenticateWithBiometrics(
+            final didAuthenticate = await _localAuth.authenticate(
               localizedReason: message,
             );
             if (didAuthenticate) {
@@ -53,7 +53,7 @@ abstract class _SplashControllerBase with Store {
         }
         if (availableBiometrics.contains(BiometricType.fingerprint)) {
           try {
-            final didAuthenticate = await _localAuth.authenticateWithBiometrics(
+            final didAuthenticate = await _localAuth.authenticate(
               localizedReason: message,
             );
             if (didAuthenticate) {
