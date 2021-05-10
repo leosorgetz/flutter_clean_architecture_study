@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
 class AppDateInput extends StatefulWidget {
-  final Function validator;
-  final Function onChanged;
-  final DateTime value;
+  final Function? validator;
+  final Function? onChanged;
+  final DateTime? value;
   final String labelText;
-  final FocusNode currentFocusNode;
-  final FocusNode nextFocusNode;
+  final FocusNode? currentFocusNode;
+  final FocusNode? nextFocusNode;
   final bool readOnly;
 
   @override
   _AppDateInputState createState() => _AppDateInputState();
 
   const AppDateInput({
-    @required this.labelText,
-    @required this.value,
+    required this.labelText,
+    this.value,
     this.validator,
     this.onChanged,
     this.currentFocusNode,
@@ -38,24 +38,25 @@ class _AppDateInputState extends State<AppDateInput> {
   @override
   Widget build(BuildContext context) => AppTextInput(
         onTap: () async {
-          final date = await PlatformDatePicker.showDate(
+          final now = DateTime.now();
+          final date = await showPlatformDatePicker(
             context: context,
             firstDate: DateTime.parse('1900-01-01'),
-            initialDate: widget.value ?? DateTime.now(),
+            initialDate: widget.value ?? now,
             lastDate: DateTime(
-              DateTime.now().year.toInt() + DateTime.now().month.toInt() + DateTime.now().day.toInt(),
+              now.year.toInt() + now.month.toInt() + now.day.toInt(),
             ),
           );
           setState(() {
-            widget.onChanged(date);
+            widget.onChanged!(date ?? now);
           });
         },
         controller: TextEditingController(
-          text: widget.value != null ? dateTimeHelper.formatToDMY(widget.value) : '',
+          text: widget.value != null ? dateTimeHelper.formatToDMY(widget.value!) : null,
         ),
         textStyle: AppTextStyle.textBlack,
         labelText: widget.labelText,
-        validator: widget.validator,
+        // validator: widget.validator,
         currentFocusNode: widget.currentFocusNode,
         nextFocusNode: widget.nextFocusNode,
         textInputAction: null,

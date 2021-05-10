@@ -1,40 +1,41 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:estudo_app/src/ui/utils/helpers/navigator_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class SizesHelper {
-  static double getHeight() {
-    ExtendedNavigator.root.context;
-    final currentContext = ExtendedNavigator.root.context;
-    return MediaQuery.of(currentContext).size.height;
+  final NavigatorHelper _navigatorHelper;
+
+  SizesHelper(this._navigatorHelper);
+
+  double getHeight() {
+    return MediaQuery.of(_navigatorHelper.context).size.height;
   }
 
-  static double getWidth() {
-    final currentContext = ExtendedNavigator.root.context;
-    return MediaQuery.of(currentContext).size.height;
+  double getWidth() {
+    return MediaQuery.of(_navigatorHelper.context).size.height;
   }
 
-  static double getStatusBarHeight() {
-    final currentContext = ExtendedNavigator.root.context;
-    return MediaQuery.of(currentContext).size.height;
+  double getStatusBarHeight() {
+    return MediaQuery.of(_navigatorHelper.context).size.height;
   }
 
-  static double getBottomSheetHeight() {
-    final currentContext = ExtendedNavigator.root.context;
-    return MediaQuery.of(currentContext).size.height;
+  double getBottomSheetHeight() {
+    return MediaQuery.of(_navigatorHelper.context).size.height;
   }
 
-  static double getToolBarHeight() => kToolbarHeight;
+  double getToolBarHeight() => kToolbarHeight;
 
-  static double getBottomNavigationHeight() => kBottomNavigationBarHeight;
+  double getBottomNavigationHeight() => kBottomNavigationBarHeight;
 
-  static double getWidthByPercentage(int percentage) {
+  double getWidthByPercentage(int percentage) {
     if (percentage > 100 || 0 > percentage) {
       throw Exception('A porcentagem deve ser maior que 0 e menor ou igual a 100.');
     }
     return getWidth() * (percentage / 100);
   }
 
-  static double getHeightByPercentage(int percentage) {
+  double getHeightByPercentage(int percentage) {
     if (percentage > 100 || 0 > percentage) {
       throw Exception('A porcentagem deve ser maior que 0 e menor ou igual a 100.');
     }

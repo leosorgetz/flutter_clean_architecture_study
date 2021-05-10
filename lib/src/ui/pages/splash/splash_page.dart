@@ -26,21 +26,20 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
       backgroundColor: AppColors.primaryColor,
       body: Observer(
         builder: (context) {
-          if (controller.errorMessage == null) {
-            return Container();
-          }
+          if (controller.errorMessage == null) return Container();
           return Container(
             padding: EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  controller.errorMessage,
+                  controller.errorMessage!,
                   style: AppTextStyle.titleBlack,
                 ),
                 SizedBox(height: 30),
                 AppButtonWidget(
                   text: 'Autenticar',
+                  textStyle: AppTextStyle.textBlack,
                   onPressed: controller.checkBiometric,
                   color: Colors.lightGreen,
                 )

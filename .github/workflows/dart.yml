@@ -8,7 +8,6 @@ on:
       - dev
       - homol
       - master
-      - 'us-**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,9 +26,6 @@ jobs:
 
       - name: generating .g files
         run: flutter pub run build_runner build --delete-conflicting-outputs
-
-      #      - name: Checking formatting issues in the code
-      #        run: flutter format --verbose --set-exit-if-changed .
 
       - name: Analyze dart code for any errors
         run: flutter analyze --verbose

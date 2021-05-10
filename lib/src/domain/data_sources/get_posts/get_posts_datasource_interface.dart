@@ -1,5 +1,5 @@
-import 'package:estudo_app/src/domain/models/result/post.dart';
+import 'package:estudo_app/src/domain/models/post_model.dart';
 
 abstract class IGetPostsDataSource {
-  Future<List<Post>> call();
+  Future<List<PostModel>> call();
 }

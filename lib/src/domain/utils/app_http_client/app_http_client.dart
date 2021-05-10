@@ -4,24 +4,14 @@ import 'package:injectable/injectable.dart';
 
 @Singleton(as: IAppHttpClient)
 class AppHttpClient implements IAppHttpClient {
-  Dio _dio;
+  final Dio _dio = Dio(
+    BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
+  );
 
-  AppHttpClient() {
-    _dio = Dio(
-      BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
-    );
-  }
-
-  /*final Dio _dio;
-
-  AppHttpClient(this._dio) {
-    _dio.options = BaseOptions(
-      baseUrl: 'https://jsonplaceholder.typicode.com',
-    );
-  }*/
+  AppHttpClient();
 
   @override
-  Future delete(String url, {Map<String, dynamic> queryParameters, Map<String, String> headers}) {
+  Future delete(String url, {Map<String, dynamic>? queryParameters, Map<String, String>? headers}) {
     return _dio.delete(
       url,
       queryParameters: queryParameters,
@@ -32,7 +22,7 @@ class AppHttpClient implements IAppHttpClient {
   }
 
   @override
-  Future get(String url, {Map<String, dynamic> queryParameters, Map<String, String> headers}) {
+  Future get(String url, {Map<String, dynamic>? queryParameters, Map<String, String>? headers}) {
     return _dio.get(
       url,
       queryParameters: queryParameters,
@@ -43,7 +33,7 @@ class AppHttpClient implements IAppHttpClient {
   }
 
   @override
-  Future patch(String url, {Map body, Map<String, dynamic> queryParameters, Map<String, String> headers}) {
+  Future patch(String url, {Map? body, Map<String, dynamic>? queryParameters, Map<String, String>? headers}) {
     return _dio.patch(
       url,
       queryParameters: queryParameters,
@@ -54,7 +44,7 @@ class AppHttpClient implements IAppHttpClient {
   }
 
   @override
-  Future post(String url, {Map body, Map<String, dynamic> queryParameters, Map<String, String> headers}) {
+  Future post(String url, {Map? body, Map<String, dynamic>? queryParameters, Map<String, String>? headers}) {
     return _dio.post(
       url,
       queryParameters: queryParameters,
@@ -65,7 +55,7 @@ class AppHttpClient implements IAppHttpClient {
   }
 
   @override
-  Future put(String url, {Map body, Map<String, dynamic> queryParameters, Map<String, String> headers}) {
+  Future put(String url, {Map? body, Map<String, dynamic>? queryParameters, Map<String, String>? headers}) {
     return _dio.put(
       url,
       queryParameters: queryParameters,

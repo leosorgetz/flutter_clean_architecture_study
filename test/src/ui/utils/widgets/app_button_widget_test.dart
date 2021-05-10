@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('Testes do button widget', () {
     testWidgets('[SUCCESS] - Teste do button widget', (WidgetTester tester) async {
-      String string;
+      String? string;
       await tester.pumpWidget(MaterialApp(
         builder: (_, __) {
           return AppButtonWidget(
@@ -27,7 +27,7 @@ void main() {
     });
 
     testWidgets('[ERROR] - Teste do button widget', (WidgetTester tester) async {
-      String string;
+      String? string;
       await tester.pumpWidget(MaterialApp(
         builder: (_, __) {
           return AppButtonWidget(

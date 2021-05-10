@@ -8,9 +8,8 @@ import 'package:mockito/mockito.dart';
 
 import '../../../utils/mocked_classes.dart';
 
-
 void main() {
-  final apiHttpClient = AppHttpClientMock();
+  final apiHttpClient = MockedClasses.appHttpClientMock;
   final dataSource = GetPostsDataSource(apiHttpClient);
 
   group('Get Posts Data Source Tests', () {
@@ -19,6 +18,7 @@ void main() {
         (_) async => Response(
           data: jsonDecode(json),
           statusCode: HttpStatus.ok,
+          requestOptions: RequestOptions(path: ':path'),
         ),
       );
       final future = dataSource();

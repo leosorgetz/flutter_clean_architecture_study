@@ -24,6 +24,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Posts'),
       ),
       drawer: DrawerPostsWidget(),
@@ -59,7 +60,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
                 verticalOffset: 100,
                 child: FadeInAnimation(
                   child: ListTile(
-                    title: Text(post.title),
+                    title: Text(post.title!),
                     enabled: true,
                     onTap: () {
                       controller.goToDetails(post);
@@ -81,7 +82,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
       },
       child: Container(
         child: Center(
-          child: Text(controller.postsObservable.error.toString()),
+          child: Text(controller.postsObservable!.error.toString()),
         ),
       ),
     );

@@ -1,8 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:estudo_app/app/app_controller.dart';
-import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
-import 'package:estudo_app/src/ui/utils/helpers/navigator_helper.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
@@ -14,31 +11,13 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends BaseState<AppWidget, AppController> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return OKToast(
-      child: MaterialApp(
-        builder: ExtendedNavigator.builder(
-          router: BaseRouter(),
-          name: NavigatorHelper.baseRouterName,
-          builder: (context, extendedNav) {
-            final data = MediaQuery.of(context);
-            return MediaQuery(
-              data: data.copyWith(
-                textScaleFactor: 1,
-              ),
-              child: Theme(
-                data: ThemeData(
-                  primaryColor: AppColors.primaryColor,
-                ),
-                child: extendedNav,
-              ),
-            );
-          },
+      child: MaterialApp.router(
+        routerDelegate: controller.navigatorHelper.router.delegate(),
+        routeInformationParser: controller.navigatorHelper.router.defaultRouteParser(),
+        theme: ThemeData(
+          primaryColor: AppColors.primaryColor,
         ),
       ),
     );

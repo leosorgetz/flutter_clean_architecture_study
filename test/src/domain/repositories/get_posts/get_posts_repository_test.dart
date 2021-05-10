@@ -1,4 +1,5 @@
-import 'package:estudo_app/src/domain/models/result/post.dart';
+import 'package:estudo_app/src/domain/entities/post.dart';
+import 'package:estudo_app/src/domain/models/post_model.dart';
 import 'package:estudo_app/src/domain/repositories/get_posts/get_posts_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -7,12 +8,14 @@ import '../../../utils/mocked_classes.dart';
 import '../../../utils/mocked_objects.dart';
 
 void main() {
-  final dataSource = GetPostsDataSourceMock();
+  final dataSource = MockedClasses.getPostsDataSourceMock;
   final repository = GetPostsRepository(dataSource);
-  final list = <Post>[
-    MockedObjects.getMockedPost(),
-    MockedObjects.getMockedPost(),
+  final list = <PostModel>[
+    MockedObjects.getMockedPostModel(),
+    MockedObjects.getMockedPostModel(),
   ];
+
+  setUp(() {});
 
   group('Get Posts Repository Tests', () {
     test('[Repository] - Deve retornar uma Lista de Posts para popular a listagem de posts', () async {
