@@ -9,7 +9,6 @@ class AppButtonWidget extends StatelessWidget {
   final Function()? onPressed;
   final EdgeInsetsGeometry padding;
 
-  // final Widget widget;
   final TextStyle textStyle;
 
   const AppButtonWidget({
@@ -39,7 +38,7 @@ class AppButtonWidget extends StatelessWidget {
         minWidth: double.infinity,
         child: Text(
           text,
-          style: onPressed != null ? AppTextStyle.textWhite : AppTextStyle.textMono2,
+          style: onPressed != null ? textStyle : AppTextStyle.textMono2,
           textAlign: TextAlign.center,
         ),
       );

@@ -1,4 +1,4 @@
-import 'package:estudo_app/src/domain/models/result/post.dart';
+import 'package:estudo_app/src/domain/entities/post.dart';
 import 'package:estudo_app/src/domain/use_cases/get_posts/get_posts_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

@@ -1,6 +1,4 @@
-import 'dart:developer';
-
-import 'package:estudo_app/src/domain/models/result/post.dart';
+import 'package:estudo_app/src/domain/entities/post.dart';
 import 'package:estudo_app/src/ui/pages/post/post_controller.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_button_widget.dart';
@@ -55,7 +53,6 @@ class _PostPageState extends BaseState<PostPage, PostController> {
               return AppButtonWidget(
                 text: 'Click',
                 onPressed: controller.canShowValue ? controller.showText : null,
-                // onPressed: controller.showText,
               );
             }),
           ],
@@ -67,6 +64,5 @@ class _PostPageState extends BaseState<PostPage, PostController> {
   @override
   void dispose() {
     super.dispose();
-    log('asdasd');
   }
 }

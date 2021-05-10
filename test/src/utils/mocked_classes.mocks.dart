@@ -6,11 +6,12 @@ import 'dart:async' as _i3;
 
 import 'package:estudo_app/src/domain/data_sources/get_posts/get_posts_datasource_interface.dart'
     as _i5;
-import 'package:estudo_app/src/domain/models/result/post.dart' as _i4;
+import 'package:estudo_app/src/domain/entities/post.dart' as _i4;
+import 'package:estudo_app/src/domain/models/post_model.dart' as _i6;
 import 'package:estudo_app/src/domain/repositories/get_posts/get_posts_repository_interface.dart'
     as _i2;
 import 'package:estudo_app/src/domain/utils/app_http_client/app_http_client_interface.dart'
-    as _i6;
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: comment_references
@@ -46,16 +47,16 @@ class MockIGetPostsDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.Post>> call() =>
+  _i3.Future<List<_i6.PostModel>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-              returnValue: Future<List<_i4.Post>>.value(<_i4.Post>[]))
-          as _i3.Future<List<_i4.Post>>);
+              returnValue: Future<List<_i6.PostModel>>.value(<_i6.PostModel>[]))
+          as _i3.Future<List<_i6.PostModel>>);
 }
 
 /// A class which mocks [IAppHttpClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockIAppHttpClient extends _i1.Mock implements _i6.IAppHttpClient {
+class MockIAppHttpClient extends _i1.Mock implements _i7.IAppHttpClient {
   MockIAppHttpClient() {
     _i1.throwOnMissingStub(this);
   }

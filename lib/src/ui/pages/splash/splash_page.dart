@@ -17,7 +17,7 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
   @override
   void initState() {
     super.initState();
-    controller.checkBiometric(context);
+    controller.checkBiometric();
   }
 
   @override
@@ -26,9 +26,7 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
       backgroundColor: AppColors.primaryColor,
       body: Observer(
         builder: (context) {
-          if (controller.errorMessage == null) {
-            return Container();
-          }
+          if (controller.errorMessage == null) return Container();
           return Container(
             padding: EdgeInsets.all(10),
             child: Column(
@@ -41,9 +39,8 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
                 SizedBox(height: 30),
                 AppButtonWidget(
                   text: 'Autenticar',
-                  onPressed: () {
-                    controller.checkBiometric(context);
-                  },
+                  textStyle: AppTextStyle.textBlack,
+                  onPressed: controller.checkBiometric,
                   color: Colors.lightGreen,
                 )
               ],

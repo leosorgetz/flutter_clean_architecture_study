@@ -1,4 +1,4 @@
-import 'package:estudo_app/src/domain/models/result/post.dart';
+import 'package:estudo_app/src/domain/entities/post.dart';
 import 'package:estudo_app/src/ui/utils/helpers/date_time_helper.dart';
 import 'package:estudo_app/src/ui/utils/helpers/retry_helper.dart';
 import 'package:estudo_app/src/ui/utils/helpers/toast_helper.dart';
