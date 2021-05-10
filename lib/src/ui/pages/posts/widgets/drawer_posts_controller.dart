@@ -1,7 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:estudo_app/src/domain/data_sources/set_fingerprint_is_active/set_fingerprint_is_active_data_source_interface.dart';
 import 'package:estudo_app/src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart';
+import 'package:estudo_app/src/ui/utils/helpers/navigator_helper.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
 
@@ -11,12 +11,14 @@ part 'drawer_posts_controller.g.dart';
 class DrawerPostsController = _DrawerControllerPostsBase with _$DrawerPostsController;
 
 abstract class _DrawerControllerPostsBase with Store {
-  IGetFingerprintIsActiveUseCase getFingerprintIsActiveUseCase;
-  ISetFingerprintIsActiveDataSource setFingerprintIsActiveDataSource;
+  final IGetFingerprintIsActiveUseCase getFingerprintIsActiveUseCase;
+  final ISetFingerprintIsActiveDataSource setFingerprintIsActiveDataSource;
+  final NavigatorHelper _navigatorHelper;
 
   @observable
   bool? status;
 
+  @action
   void setStatus(bool status) => this.status = status;
 
   Future<void> activateFingerprint(bool status) async {
@@ -27,18 +29,13 @@ abstract class _DrawerControllerPostsBase with Store {
   _DrawerControllerPostsBase(
     this.getFingerprintIsActiveUseCase,
     this.setFingerprintIsActiveDataSource,
+    this._navigatorHelper,
   ) {
-    final status = getFingerprintIsActiveUseCase();
-    if (status) {
-      setStatus(false);
-      return;
-    }
-    setStatus(status);
+    setStatus(getFingerprintIsActiveUseCase());
   }
 
   void navigateToAnimationPage() {
-    ExtendedNavigator.root!.pop();
-    // ExtendedNavigator.root!.push(Routes.exampleAnimationPage);
-    AutoRouter.of(ExtendedNavigator.root!.context).push(ExampleAnimationRoute());
+    _navigatorHelper.router.pop();
+    _navigatorHelper.router.push(ExampleAnimationRoute());
   }
 }

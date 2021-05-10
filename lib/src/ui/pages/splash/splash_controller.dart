@@ -1,7 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:estudo_app/src/domain/use_cases/get_fingerprint_is_active/get_fingerprint_is_active_use_case_interface.dart';
+import 'package:estudo_app/src/ui/utils/helpers/navigator_helper.dart';
 import 'package:estudo_app/src/ui/utils/helpers/toast_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:mobx/mobx.dart';
@@ -14,6 +15,7 @@ class SplashController = _SplashControllerBase with _$SplashController;
 abstract class _SplashControllerBase with Store {
   final ToastHelper toastHelper;
   final IGetFingerprintIsActiveUseCase getFingerprintIsActiveUseCase;
+  final NavigatorHelper _navigatorHelper;
   final message = 'Autentique para entrar no app.';
 
   @observable
@@ -22,12 +24,13 @@ abstract class _SplashControllerBase with Store {
   _SplashControllerBase(
     this.toastHelper,
     this.getFingerprintIsActiveUseCase,
+    this._navigatorHelper,
   );
 
   @action
   void setErrorMessage(String errorMessage) => this.errorMessage = errorMessage;
 
-  Future<void> checkBiometric() async {
+  Future<void> checkBiometric(BuildContext __) async {
     final fingerprintIsActive = getFingerprintIsActiveUseCase();
     if (fingerprintIsActive) {
       final _localAuth = LocalAuthentication();
@@ -40,9 +43,7 @@ abstract class _SplashControllerBase with Store {
               localizedReason: message,
             );
             if (didAuthenticate) {
-              // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
-              AutoRouter.of(ExtendedNavigator.root!.context)
-                  .pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
+              _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
             } else {
               setErrorMessage('Não Autenticou.');
               return;
@@ -57,9 +58,7 @@ abstract class _SplashControllerBase with Store {
               localizedReason: message,
             );
             if (didAuthenticate) {
-              // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
-              AutoRouter.of(ExtendedNavigator.root!.context)
-                  .pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
+              _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
             } else {
               setErrorMessage('Não Autenticou.');
               return;
@@ -70,12 +69,10 @@ abstract class _SplashControllerBase with Store {
         }
       } else {
         setErrorMessage('Não existe biometria para usar.');
-        // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
-        AutoRouter.of(ExtendedNavigator.root!.context).pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
+        _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
       }
     } else {
-      // ExtendedNavigator.root!.pushAndRemoveUntil(Routes.postsPage, (route) => false);
-      AutoRouter.of(ExtendedNavigator.root!.context).pushAndRemoveUntil(PostsRoute(), predicate: (route) => false);
+      _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
     }
   }
 }

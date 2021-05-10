@@ -1,5 +1,3 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:estudo_app/config/router/base_router.gr.dart';
 import 'package:estudo_app/src/ui/pages/splash/splash_controller.dart';
 import 'package:estudo_app/src/ui/utils/constants/app_colors.dart';
 import 'package:estudo_app/src/ui/utils/constants/app_text_styles.dart';
@@ -19,8 +17,7 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
   @override
   void initState() {
     super.initState();
-    // controller.checkBiometric();
-    AutoRouter.of(ExtendedNavigator.root!.context).push(PostsRoute());
+    controller.checkBiometric(context);
   }
 
   @override
@@ -44,7 +41,9 @@ class _SplashPageState extends BaseState<SplashPage, SplashController> {
                 SizedBox(height: 30),
                 AppButtonWidget(
                   text: 'Autenticar',
-                  onPressed: controller.checkBiometric,
+                  onPressed: () {
+                    controller.checkBiometric(context);
+                  },
                   color: Colors.lightGreen,
                 )
               ],

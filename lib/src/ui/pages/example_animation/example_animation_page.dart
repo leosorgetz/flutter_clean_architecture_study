@@ -1,5 +1,4 @@
 import 'package:estudo_app/src/ui/pages/example_animation/example_animation_controller.dart';
-import 'package:estudo_app/src/ui/utils/helpers/sizes_helper.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -50,7 +49,8 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
   Widget _buildExample() => Column(children: [
         _buildContainer(
           color: Colors.deepPurpleAccent,
-          width: SizesHelper.getWidth(),
+          // width: SizesHelper.getWidth(),
+          width: double.infinity,
         ),
         _buildSpace(),
         Row(

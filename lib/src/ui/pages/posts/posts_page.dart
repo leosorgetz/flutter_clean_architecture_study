@@ -24,6 +24,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Posts'),
       ),
       drawer: DrawerPostsWidget(),
@@ -62,7 +63,7 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
                     title: Text(post.title!),
                     enabled: true,
                     onTap: () {
-                      controller.goToDetails(post, context: context);
+                      controller.goToDetails(post);
                     },
                   ),
                 ),

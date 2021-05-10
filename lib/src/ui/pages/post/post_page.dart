@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:estudo_app/src/domain/models/result/post.dart';
 import 'package:estudo_app/src/ui/pages/post/post_controller.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
@@ -36,11 +38,6 @@ class _PostPageState extends BaseState<PostPage, PostController> {
             Observer(builder: (context) {
               return AppTextInput(
                 labelText: 'Input',
-                // onChanged: (String text) {
-                //   setState(() {
-                //     controller.text = text;
-                //   });
-                // },
                 value: controller.text,
                 onChanged: controller.setText,
               );
@@ -50,11 +47,6 @@ class _PostPageState extends BaseState<PostPage, PostController> {
               return AppDateInput(
                 labelText: 'Data de nascimento',
                 value: controller.dateTime,
-                // onChanged: (DateTime date) {
-                //   setState(() {
-                //     controller.dateTime = date;
-                //   });
-                // },
                 onChanged: controller.setDateTime,
               );
             }),
@@ -70,5 +62,11 @@ class _PostPageState extends BaseState<PostPage, PostController> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    log('asdasd');
   }
 }
