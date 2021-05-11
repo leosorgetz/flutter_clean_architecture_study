@@ -39,6 +39,6 @@ abstract class _PostsControllerBase with Store {
   }
 
   Future<void> goToDetails(Post post) async {
-    _navigatorHelper.router.push(PostRoute(post: post));
+    _navigatorHelper.router.push(PostPageRoute(post: post));
   }
 }

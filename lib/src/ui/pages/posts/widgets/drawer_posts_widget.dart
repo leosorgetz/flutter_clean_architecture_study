@@ -47,11 +47,6 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 ),
               ),
             ),
-            _buildListTile(
-              leading: Icon(Icons.remove_red_eye_outlined),
-              title: 'Animation example',
-              onTap: controller.navigateToAnimationPage,
-            ),
             Observer(builder: (context) {
               return _buildListTile(
                 trailing: AppSwitchWidget(
@@ -61,6 +56,16 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 leading: Text('Ativar biometria'),
               );
             }),
+            _buildListTile(
+              leading: Icon(Icons.remove_red_eye_outlined),
+              title: 'Animation example',
+              onTap: controller.navigateToAnimationPage,
+            ),
+            _buildListTile(
+              leading: Icon(Icons.keyboard_arrow_right),
+              title: 'Testar Navegação',
+              onTap: controller.navigateToFlow,
+            ),
           ],
         ),
       );

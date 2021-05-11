@@ -35,13 +35,13 @@ abstract class _SplashControllerBase with Store {
     if (fingerprintIsActive) {
       final fingerprintGranted = await _fingerprintHelper.checkBiometric();
       if (fingerprintGranted) {
-        _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
+        _navigatorHelper.router.pushAndPopUntil(PostsPageRoute(), predicate: (route) => false);
         return;
       }
       setErrorMessage('Não Autenticou.');
     } else {
       Future.delayed(Duration(milliseconds: 200), () {
-        _navigatorHelper.router.pushAndPopUntil(PostsRoute(), predicate: (route) => false);
+        _navigatorHelper.router.pushAndPopUntil(PostsPageRoute(), predicate: (route) => false);
       });
     }
   }

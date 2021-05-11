@@ -36,6 +36,11 @@ abstract class _DrawerControllerPostsBase with Store {
 
   void navigateToAnimationPage() {
     _navigatorHelper.router.pop();
-    _navigatorHelper.router.push(ExampleAnimationRoute());
+    _navigatorHelper.router.push(ExampleAnimationPageRoute());
+  }
+
+  void navigateToFlow() {
+    _navigatorHelper.router.pop();
+    _navigatorHelper.router.push(PageOnePageRoute());
   }
 }
