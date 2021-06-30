@@ -19,9 +19,9 @@ const USE_CASE_TEST = './generator/files/_template_use_case_test.dart';
 const REPOSITORY_TEST = './generator/files/_template_repository_test.dart';
 const DATA_SOURCE_TEST = './generator/files/_template_data_source_test.dart';
 
-String templateValue;
-String resultTypeValue;
-String folderName;
+late String templateValue;
+late String resultTypeValue;
+late String folderName;
 
 main(List<String> args) async {
   final firstArg = args[0].toString() == '--template' || args[0].toString() == '-t';
@@ -121,7 +121,7 @@ main(List<String> args) async {
   _print('Tudo finalizado caboclo, vai codar.');
 }
 
-Future<String> replaceFile({String fileName}) async {
+Future<String> replaceFile({required String fileName}) async {
   final fileString = await File(fileName).readAsString();
   var replacedFileString = fileString.replaceAll(TEMPLATE, templateValue);
   replacedFileString = replacedFileString.replaceAll(RESULT_TYPE, resultTypeValue);
@@ -129,10 +129,10 @@ Future<String> replaceFile({String fileName}) async {
 }
 
 Future<void> saveFile({
-  String path,
-  String folderName,
-  String fileName,
-  String content,
+  required String path,
+  required String folderName,
+  required String fileName,
+  required String content,
 }) async {
   final fileNameETBilu = '$path/$folderName/$fileName';
   final directoryName = '$path/$folderName';
@@ -141,7 +141,7 @@ Future<void> saveFile({
   // _print(fileNameETBilu);
 }
 
-void createDirectory({String path}) {
+void createDirectory({required String path}) {
   final directory = Directory(path);
   if (!directory.existsSync()) {
     directory.createSync();

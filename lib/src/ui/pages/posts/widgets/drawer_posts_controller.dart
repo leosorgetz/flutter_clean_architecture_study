@@ -8,7 +8,8 @@ import 'package:mobx/mobx.dart';
 part 'drawer_posts_controller.g.dart';
 
 @injectable
-class DrawerPostsController = _DrawerControllerPostsBase with _$DrawerPostsController;
+class DrawerPostsController = _DrawerControllerPostsBase
+    with _$DrawerPostsController;
 
 abstract class _DrawerControllerPostsBase with Store {
   final IGetFingerprintIsActiveUseCase getFingerprintIsActiveUseCase;
@@ -42,5 +43,10 @@ abstract class _DrawerControllerPostsBase with Store {
   void navigateToFlow() {
     _navigatorHelper.router.pop();
     _navigatorHelper.router.push(PageOnePageRoute());
+  }
+
+  void navigateToLogin() {
+    _navigatorHelper.router.pop();
+    _navigatorHelper.router.push(LoginPageRoute());
   }
 }
