@@ -11,7 +11,8 @@ class DrawerPostsWidget extends StatefulWidget {
   _DrawerPostsWidgetState createState() => _DrawerPostsWidgetState();
 }
 
-class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsController> {
+class _DrawerPostsWidgetState
+    extends BaseState<DrawerPostsWidget, DrawerPostsController> {
   @override
   Widget build(BuildContext context) => Drawer(
         child: ListView(
@@ -33,7 +34,7 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 padding: const EdgeInsets.only(bottom: 20, top: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text(
                       'Flutter Clean Arch',
                       style: AppTextStyle.titleWhite,
@@ -47,11 +48,6 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 ),
               ),
             ),
-            _buildListTile(
-              leading: Icon(Icons.remove_red_eye_outlined),
-              title: 'Animation example',
-              onTap: controller.navigateToAnimationPage,
-            ),
             Observer(builder: (context) {
               return _buildListTile(
                 trailing: AppSwitchWidget(
@@ -61,6 +57,21 @@ class _DrawerPostsWidgetState extends BaseState<DrawerPostsWidget, DrawerPostsCo
                 leading: Text('Ativar biometria'),
               );
             }),
+            _buildListTile(
+              leading: Icon(Icons.remove_red_eye_outlined),
+              title: 'Animation example',
+              onTap: controller.navigateToAnimationPage,
+            ),
+            _buildListTile(
+              leading: Icon(Icons.keyboard_arrow_right),
+              title: 'Testar Navegação',
+              onTap: controller.navigateToFlow,
+            ),
+            _buildListTile(
+              leading: Icon(Icons.login),
+              title: 'Login Page Example',
+              onTap: controller.navigateToLogin,
+            ),
           ],
         ),
       );

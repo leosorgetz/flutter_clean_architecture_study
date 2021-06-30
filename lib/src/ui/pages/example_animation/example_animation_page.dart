@@ -10,7 +10,8 @@ class ExampleAnimationPage extends StatefulWidget {
   _ExampleAnimationPageState createState() => _ExampleAnimationPageState();
 }
 
-class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, ExampleAnimationController> {
+class _ExampleAnimationPageState
+    extends BaseState<ExampleAnimationPage, ExampleAnimationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +35,6 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
                   _buildExample(),
                   _buildExample(),
                   _buildExample(),
-                  _buildExample(),
-                  _buildExample(),
-                  _buildExample(),
                 ],
               ),
             ),
@@ -46,38 +44,43 @@ class _ExampleAnimationPageState extends BaseState<ExampleAnimationPage, Example
     );
   }
 
-  Widget _buildExample() => Column(children: [
-        _buildContainer(
-          color: Colors.deepPurpleAccent,
-          // width: SizesHelper.getWidth(),
-          width: double.infinity,
-        ),
-        _buildSpace(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+  Widget _buildExample() => Container(
+        padding: EdgeInsets.only(top: 8),
+        child: Column(
           children: [
-            Expanded(
-              child: _buildContainer(
-                color: Colors.blueAccent,
-                autoWidth: true,
-              ),
+            _buildContainer(
+              color: Colors.deepPurpleAccent,
+              // width: SizesHelper.getWidth(),
+              width: double.infinity,
             ),
-            Expanded(
-              child: _buildContainer(
-                color: Colors.red,
-                autoWidth: true,
-              ),
+            _buildSpace(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: _buildContainer(
+                    color: Colors.blueAccent,
+                    autoWidth: true,
+                  ),
+                ),
+                Expanded(
+                  child: _buildContainer(
+                    color: Colors.red,
+                    autoWidth: true,
+                  ),
+                ),
+                Expanded(
+                  child: _buildContainer(
+                    color: Colors.green,
+                    autoWidth: true,
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: _buildContainer(
-                color: Colors.green,
-                autoWidth: true,
-              ),
-            ),
+            _buildSpace(),
           ],
         ),
-        _buildSpace(),
-      ]);
+      );
 
   Widget _buildContainer({
     required Color color,
