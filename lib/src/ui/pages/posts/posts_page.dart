@@ -1,5 +1,7 @@
+import 'package:estudo_app/src/domain/entities/post.dart';
 import 'package:estudo_app/src/ui/pages/posts/posts_controller.dart';
 import 'package:estudo_app/src/ui/pages/posts/widgets/drawer_posts_widget.dart';
+import 'package:estudo_app/src/ui/utils/states/base_page_state.dart';
 import 'package:estudo_app/src/ui/utils/states/base_state.dart';
 import 'package:estudo_app/src/ui/utils/widgets/app_pull_to_refresh.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +31,14 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
       ),
       drawer: DrawerPostsWidget(),
       body: Observer(builder: (context) {
-        if (controller.postsIsLoading) return buildLoading();
-        if (controller.postsHasError) return buildError();
-        return buildSuccess();
+        final state = controller.state;
+        if (state is SuccessPageState<List<Post>>) {
+          return buildSuccess(state.data);
+        }
+        if (state is ErrorPageState) {
+          return buildError(state.message);
+        }
+        return buildLoading();
       }),
     );
   }
@@ -42,47 +49,44 @@ class _PostsPageState extends BaseState<PostsPage, PostsController> {
         ),
       );
 
-  Widget buildSuccess() {
-    final posts = controller.postsObservable?.value ?? [];
-    return AnimationLimiter(
-      child: PullToRefreshWidget(
-        onRefresh: () {
-          controller.getPosts();
-        },
-        child: ListView.builder(
-          itemCount: posts.length,
-          itemBuilder: (_, index) {
-            final post = posts[index];
-            return AnimationConfiguration.staggeredList(
-              position: index,
-              duration: const Duration(milliseconds: 250),
-              child: SlideAnimation(
-                verticalOffset: 100,
-                child: FadeInAnimation(
-                  child: ListTile(
-                    title: Text(post.title!),
-                    enabled: true,
-                    onTap: () {
-                      controller.goToDetails(post);
-                    },
+  Widget buildSuccess(List<Post> posts) => AnimationLimiter(
+        child: PullToRefreshWidget(
+          onRefresh: () {
+            controller.getPosts();
+          },
+          child: ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (_, index) {
+              final post = posts[index];
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 250),
+                child: SlideAnimation(
+                  verticalOffset: 100,
+                  child: FadeInAnimation(
+                    child: ListTile(
+                      title: Text(post.title!),
+                      enabled: true,
+                      onTap: () {
+                        controller.goToDetails(post);
+                      },
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      ),
-    );
-  }
+      );
 
-  Widget buildError() {
+  Widget buildError(String message) {
     return PullToRefreshWidget(
       onRefresh: () {
         controller.getPosts();
       },
       child: Container(
         child: Center(
-          child: Text(controller.postsObservable!.error.toString()),
+          child: Text(message),
         ),
       ),
     );
