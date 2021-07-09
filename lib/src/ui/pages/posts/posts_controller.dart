@@ -17,6 +17,9 @@ abstract class _PostsControllerBase with Store {
   @observable
   BasePageState? state;
 
+  @action
+  void setState(BasePageState value) => state = value;
+
   _PostsControllerBase(
     this._getPostsUseCase,
     this._navigatorHelper,
@@ -27,9 +30,9 @@ abstract class _PostsControllerBase with Store {
     state = LoadingPageState();
     var result = await _getPostsUseCase();
     if (result.isSuccess) {
-      state = SuccessPageState(result.extractSuccess);
+      setState(SuccessPageState(result.extractSuccess));
     } else {
-      state = ErrorPageState(result.extractError.toString());
+      setState(ErrorPageState(result.extractError.message));
     }
   }
 

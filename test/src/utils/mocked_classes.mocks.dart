@@ -5,13 +5,14 @@
 import 'dart:async' as _i4;
 
 import 'package:estudo_app/src/domain/data_sources/get_posts/get_posts_datasource_interface.dart'
-    as _i6;
-import 'package:estudo_app/src/domain/entities/post.dart' as _i5;
-import 'package:estudo_app/src/domain/models/post_model.dart' as _i7;
+    as _i7;
+import 'package:estudo_app/src/domain/entities/post.dart' as _i6;
+import 'package:estudo_app/src/domain/error/base_error.dart' as _i5;
+import 'package:estudo_app/src/domain/models/post_model.dart' as _i8;
 import 'package:estudo_app/src/domain/repositories/get_posts/get_posts_repository_interface.dart'
     as _i3;
 import 'package:estudo_app/src/domain/utils/app_http_client/app_http_client_interface.dart'
-    as _i8;
+    as _i9;
 import 'package:estudo_app/src/domain/utils/result_wrapper/result.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -35,33 +36,33 @@ class MockIGetPostsRepository extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.Result<Exception, List<_i5.Post>>> call() =>
+  _i4.Future<_i2.Result<_i5.BaseError, List<_i6.Post>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-              returnValue: Future<_i2.Result<Exception, List<_i5.Post>>>.value(
-                  _FakeResult<Exception, List<_i5.Post>>()))
-          as _i4.Future<_i2.Result<Exception, List<_i5.Post>>>);
+          returnValue: Future<_i2.Result<_i5.BaseError, List<_i6.Post>>>.value(
+              _FakeResult<_i5.BaseError, List<_i6.Post>>())) as _i4
+          .Future<_i2.Result<_i5.BaseError, List<_i6.Post>>>);
 }
 
 /// A class which mocks [IGetPostsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockIGetPostsDataSource extends _i1.Mock
-    implements _i6.IGetPostsDataSource {
+    implements _i7.IGetPostsDataSource {
   MockIGetPostsDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<List<_i7.PostModel>> call() =>
+  _i4.Future<List<_i8.PostModel>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-              returnValue: Future<List<_i7.PostModel>>.value(<_i7.PostModel>[]))
-          as _i4.Future<List<_i7.PostModel>>);
+              returnValue: Future<List<_i8.PostModel>>.value(<_i8.PostModel>[]))
+          as _i4.Future<List<_i8.PostModel>>);
 }
 
 /// A class which mocks [IAppHttpClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockIAppHttpClient extends _i1.Mock implements _i8.IAppHttpClient {
+class MockIAppHttpClient extends _i1.Mock implements _i9.IAppHttpClient {
   MockIAppHttpClient() {
     _i1.throwOnMissingStub(this);
   }

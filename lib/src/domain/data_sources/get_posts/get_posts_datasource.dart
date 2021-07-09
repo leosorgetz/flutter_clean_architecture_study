@@ -11,7 +11,10 @@ class GetPostsDataSource implements IGetPostsDataSource {
 
   @override
   Future<List<PostModel>> call() async {
-    final response = await _appHttpClient.get('/posts');
-    return (response.data as List).map((item) => PostModel.fromJson(item)).toList();
+    // final response = await _appHttpClient.get('/posts');
+    final response = await _appHttpClient.get('/poss');
+    return (response.data as List)
+        .map((item) => PostModel.fromJson(item))
+        .toList();
   }
 }

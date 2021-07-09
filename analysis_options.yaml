@@ -75,7 +75,7 @@ linter:
     - omit_local_variable_types
     #    - one_member_abstracts
     - only_throw_errors
-    - overridden_fields
+#    - overridden_fields
     - package_api_docs
     - package_names
     - package_prefixed_library_names
@@ -235,7 +235,7 @@ analyzer:
     omit_local_variable_types: error
     #    one_member_abstracts: error
     only_throw_errors: error
-    overridden_fields: error
+#    overridden_fields: error
     package_api_docs: error
     package_names: error
     package_prefixed_library_names: error
